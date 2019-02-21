@@ -1,0 +1,70 @@
+1월 07, 2019 9:35:42 오전 com.pluspro.ctrlwcs.CtrlWcs_NormalTempSorter main
+정보: Start com.pluspro.ctrlwcs.CtrlWcs_NormalTempSorter ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+1월 07, 2019 9:35:42 오전 com.pluspro.ctrlwcs.CtrlWcs_NormalTempSorter main
+정보: Conf File : conf.properties
+1월 07, 2019 9:35:42 오전 com.pluspro.ctrlwcs.CtrlWcs_NormalTempSorter main
+정보: End com.pluspro.ctrlwcs.CtrlWcs_NormalTempSorter ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+1월 07, 2019 9:37:24 오전 com.pluspro.ctrlwcs.CtrlWcs_NormalTempSorter main
+정보: Start com.pluspro.ctrlwcs.CtrlWcs_NormalTempSorter ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+1월 07, 2019 9:37:24 오전 com.pluspro.ctrlwcs.CtrlWcs_NormalTempSorter main
+정보: Conf File : conf.properties
+1월 07, 2019 9:37:24 오전 com.pluspro.ctrlwcs.CtrlWcs_NormalTempSorter main
+정보: -----------------------------------------------------------
+CTRLWCS Database
+-----------------------------------------------------------
+ctrlwcs.ip : 127.0.0.1
+ctrlwcs.port : 1521
+ctrlwcs.sid : orcl
+-----------------------------------------------------------
+WCS Database
+-----------------------------------------------------------
+wcs.ip : 127.0.0.1
+wcs.port : 1521
+wcs.sid : orcl
+
+1월 07, 2019 9:38:26 오전 com.pluspro.ctrlwcs.CtrlWcs_NormalTempSorter main
+심각: Error
+com.microsoft.sqlserver.jdbc.SQLServerException: 호스트 127.0.0.1, 포트 1521에 대한 TCP/IP 연결에 실패했습니다. 오류: "드라이버가 예기치 않은 사전 로그인 응답을 받았습니다. 연결 속성을 확인하고 SQL Server의 인스턴스가 호스트에서 실행되고 있고 포트에서 TCP/IP 연결을 허용하고 있는지 확인하십시오. 이 드라이버는 SQL Server 2000 이상에서만 사용될 수 있습니다.". ClientConnectionId:52c2b5a3-cf2e-4fe0-8a0e-aab8ab45f387
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.terminate(SQLServerConnection.java:1749)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.terminate(SQLServerConnection.java:1733)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.Prelogin(SQLServerConnection.java:1521)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.connectHelper(SQLServerConnection.java:1398)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.login(SQLServerConnection.java:1069)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.connectInternal(SQLServerConnection.java:905)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.connect(SQLServerConnection.java:452)
+	at com.microsoft.sqlserver.jdbc.SQLServerDriver.connect(SQLServerDriver.java:1014)
+	at java.sql.DriverManager.getConnection(Unknown Source)
+	at java.sql.DriverManager.getConnection(Unknown Source)
+	at com.pluspro.ctrlwcs.connecter.MsSqlConnecter.open(MsSqlConnecter.java:29)
+	at com.pluspro.ctrlwcs.connecter.ConnectionHelper.getMsSqlConnection(ConnectionHelper.java:18)
+	at com.pluspro.ctrlwcs.CtrlWcs_NormalTempSorter.main(CtrlWcs_NormalTempSorter.java:53)
+
+1월 07, 2019 9:38:26 오전 com.pluspro.ctrlwcs.CtrlWcs_NormalTempSorter main
+정보: End com.pluspro.ctrlwcs.CtrlWcs_NormalTempSorter ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+1월 07, 2019 9:39:15 오전 com.pluspro.ctrlwcs.CtrlWcs_NormalTempSorter main
+정보: Start com.pluspro.ctrlwcs.CtrlWcs_NormalTempSorter ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+1월 07, 2019 9:39:15 오전 com.pluspro.ctrlwcs.CtrlWcs_NormalTempSorter main
+정보: Conf File : conf.properties
+1월 07, 2019 9:39:15 오전 com.pluspro.ctrlwcs.CtrlWcs_NormalTempSorter main
+정보: -----------------------------------------------------------
+CTRLWCS Database
+-----------------------------------------------------------
+ctrlwcs.ip : 127.0.0.1
+ctrlwcs.port : 1521
+ctrlwcs.sid : orcl
+-----------------------------------------------------------
+WCS Database
+-----------------------------------------------------------
+wcs.ip : 127.0.0.1
+wcs.port : 1521
+wcs.sid : orcl
+
+1월 07, 2019 9:39:17 오전 com.pluspro.ctrlwcs.CtrlWcs_NormalTempSorter main
+정보: -----------------------------------------------------------
+DB Connection Instances
+-----------------------------------------------------------
+ctrlWcsCon : oracle.jdbc.driver.T4CConnection@2b80d80f
+mps2KorailCon : oracle.jdbc.driver.T4CConnection@6483f5ae
+
+1월 07, 2019 9:39:17 오전 com.pluspro.ctrlwcs.CtrlWcs_NormalTempSorter main
+정보: End com.pluspro.ctrlwcs.CtrlWcs_NormalTempSorter ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

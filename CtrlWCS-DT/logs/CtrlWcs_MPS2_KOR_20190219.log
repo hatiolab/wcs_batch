@@ -1,0 +1,310 @@
+Feb 19, 2019 5:54:47 PM com.pluspro.ctrlwcs.CtrlWcs_MPS2 main
+정보: Start CtrlWcs_MPS2 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Feb 19, 2019 5:54:48 PM com.pluspro.ctrlwcs.CtrlWcs_MPS2 main
+정보: CMD : KOR
+Feb 19, 2019 5:54:48 PM com.pluspro.ctrlwcs.CtrlWcs_MPS2 main
+정보: Conf File : conf.properties
+Feb 19, 2019 5:54:50 PM com.pluspro.ctrlwcs.CtrlWcs_MPS2 main
+정보: -----------------------------------------------------------
+CTRLWCS Database
+-----------------------------------------------------------
+ctrlwcs.ip : 10.68.2.76
+ctrlwcs.port : 1555
+ctrlwcs.sid : PCTRLWCS
+-----------------------------------------------------------
+MPS2.0 �ڷ��� Database
+-----------------------------------------------------------
+mps2_korail.ip : 128.11.1.211
+mps2_korail.port : 1433
+mps2_korail.sid : WS_HI_0314_DA1
+
+Feb 19, 2019 5:54:51 PM com.pluspro.ctrlwcs.CtrlWcs_MPS2 main
+심각: Error
+java.sql.SQLRecoverableException: IO 오류: The Network Adapter could not establish the connection
+	at oracle.jdbc.driver.T4CConnection.logon(T4CConnection.java:774)
+	at oracle.jdbc.driver.PhysicalConnection.connect(PhysicalConnection.java:688)
+	at oracle.jdbc.driver.T4CDriverExtension.getConnection(T4CDriverExtension.java:39)
+	at oracle.jdbc.driver.OracleDriver.connect(OracleDriver.java:691)
+	at java.sql.DriverManager.getConnection(DriverManager.java:664)
+	at java.sql.DriverManager.getConnection(DriverManager.java:247)
+	at com.pluspro.ctrlwcs.connecter.OracleConnecter.open(OracleConnecter.java:29)
+	at com.pluspro.ctrlwcs.connecter.ConnectionHelper.getOracleConnection(ConnectionHelper.java:9)
+	at com.pluspro.ctrlwcs.CtrlWcs_MPS2.main(CtrlWcs_MPS2.java:91)
+Caused by: oracle.net.ns.NetException: The Network Adapter could not establish the connection
+	at oracle.net.nt.ConnStrategy.execute(ConnStrategy.java:523)
+	at oracle.net.resolver.AddrResolution.resolveAndExecute(AddrResolution.java:521)
+	at oracle.net.ns.NSProtocol.establishConnection(NSProtocol.java:660)
+	at oracle.net.ns.NSProtocol.connect(NSProtocol.java:286)
+	at oracle.jdbc.driver.T4CConnection.connect(T4CConnection.java:1438)
+	at oracle.jdbc.driver.T4CConnection.logon(T4CConnection.java:518)
+	... 8 more
+Caused by: java.io.IOException: Connection refused, socket connect lapse 263 ms. /10.68.2.76 1555 0 1 true
+	at oracle.net.nt.TcpNTAdapter.connect(TcpNTAdapter.java:209)
+	at oracle.net.nt.ConnOption.connect(ConnOption.java:161)
+	at oracle.net.nt.ConnStrategy.execute(ConnStrategy.java:470)
+	... 13 more
+Caused by: java.net.ConnectException: Connection refused
+	at sun.nio.ch.Net.connect0(Native Method)
+	at sun.nio.ch.Net.connect(Net.java:454)
+	at sun.nio.ch.Net.connect(Net.java:446)
+	at sun.nio.ch.SocketChannelImpl.connect(SocketChannelImpl.java:648)
+	at java.nio.channels.SocketChannel.open(SocketChannel.java:189)
+	at oracle.net.nt.TimeoutSocketChannel.<init>(TimeoutSocketChannel.java:81)
+	at oracle.net.nt.TcpNTAdapter.connect(TcpNTAdapter.java:169)
+	... 15 more
+
+Feb 19, 2019 5:54:51 PM com.pluspro.ctrlwcs.CtrlWcs_MPS2 main
+정보: End CtrlWcs_MPS2 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Feb 19, 2019 5:57:45 PM com.pluspro.ctrlwcs.CtrlWcs_MPS2 main
+정보: Start CtrlWcs_MPS2 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Feb 19, 2019 5:57:45 PM com.pluspro.ctrlwcs.CtrlWcs_MPS2 main
+정보: CMD : KOR
+Feb 19, 2019 5:57:45 PM com.pluspro.ctrlwcs.CtrlWcs_MPS2 main
+정보: Conf File : conf.properties
+Feb 19, 2019 5:57:45 PM com.pluspro.ctrlwcs.CtrlWcs_MPS2 main
+정보: -----------------------------------------------------------
+CTRLWCS Database
+-----------------------------------------------------------
+ctrlwcs.ip : 10.68.2.76
+ctrlwcs.port : 1555
+ctrlwcs.sid : PCTRLWCS
+-----------------------------------------------------------
+MPS2.0 �ڷ��� Database
+-----------------------------------------------------------
+mps2_korail.ip : 128.11.1.211
+mps2_korail.port : 1433
+mps2_korail.sid : WS_HI_0314_DA1
+
+Feb 19, 2019 5:59:03 PM com.pluspro.ctrlwcs.CtrlWcs_MPS2 main
+정보: Start CtrlWcs_MPS2 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Feb 19, 2019 5:59:03 PM com.pluspro.ctrlwcs.CtrlWcs_MPS2 main
+정보: CMD : KOR
+Feb 19, 2019 5:59:03 PM com.pluspro.ctrlwcs.CtrlWcs_MPS2 main
+정보: Conf File : conf.properties
+Feb 19, 2019 5:59:03 PM com.pluspro.ctrlwcs.CtrlWcs_MPS2 main
+정보: -----------------------------------------------------------
+CTRLWCS Database
+-----------------------------------------------------------
+ctrlwcs.ip : 10.68.2.76
+ctrlwcs.port : 1555
+ctrlwcs.sid : PCTRLWCS
+-----------------------------------------------------------
+MPS2.0 �ڷ��� Database
+-----------------------------------------------------------
+mps2_korail.ip : 128.11.1.211
+mps2_korail.port : 1433
+mps2_korail.sid : WS_HI_0314_DA1
+
+Feb 19, 2019 6:02:21 PM com.pluspro.ctrlwcs.CtrlWcs_MPS2 main
+정보: Start CtrlWcs_MPS2 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Feb 19, 2019 6:02:21 PM com.pluspro.ctrlwcs.CtrlWcs_MPS2 main
+정보: CMD : KOR
+Feb 19, 2019 6:02:21 PM com.pluspro.ctrlwcs.CtrlWcs_MPS2 main
+정보: Conf File : conf.properties
+Feb 19, 2019 6:02:21 PM com.pluspro.ctrlwcs.CtrlWcs_MPS2 main
+정보: -----------------------------------------------------------
+CTRLWCS Database
+-----------------------------------------------------------
+ctrlwcs.ip : 10.68.2.76
+ctrlwcs.port : 1555
+ctrlwcs.sid : PCTRLWCS
+-----------------------------------------------------------
+MPS2.0 �ڷ��� Database
+-----------------------------------------------------------
+mps2_korail.ip : 128.11.1.211
+mps2_korail.port : 1433
+mps2_korail.sid : WS_HI_0314_DA1
+
+2월 19, 2019 6:02:50 오후 com.pluspro.ctrlwcs.CtrlWcs_MPS2 main
+정보: Start CtrlWcs_MPS2 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+2월 19, 2019 6:02:50 오후 com.pluspro.ctrlwcs.CtrlWcs_MPS2 main
+정보: CMD : KOR
+2월 19, 2019 6:02:50 오후 com.pluspro.ctrlwcs.CtrlWcs_MPS2 main
+정보: Conf File : conf.properties
+2월 19, 2019 6:02:50 오후 com.pluspro.ctrlwcs.CtrlWcs_MPS2 main
+정보: -----------------------------------------------------------
+CTRLWCS Database
+-----------------------------------------------------------
+ctrlwcs.ip : 10.68.2.76
+ctrlwcs.port : 1555
+ctrlwcs.sid : PCTRLWCS
+-----------------------------------------------------------
+MPS2.0 �ڷ��� Database
+-----------------------------------------------------------
+mps2_korail.ip : 128.11.1.211
+mps2_korail.port : 1433
+mps2_korail.sid : WS_HI_0314_DA1
+
+2월 19, 2019 6:02:54 오후 com.pluspro.ctrlwcs.CtrlWcs_MPS2 main
+정보: -----------------------------------------------------------
+DB Connection Instances
+-----------------------------------------------------------
+ctrlWcsCon : oracle.jdbc.driver.T4CConnection@1aa7ecca
+mps2KorailCon : ConnectionID:1 ClientConnectionId: 7952030d-f208-4b5b-a3b5-1aae40295b66
+mps2EEDBoxCon : null
+mps2EEDSubdivisionCon : null
+
+2월 19, 2019 6:02:54 오후 com.pluspro.ctrlwcs.extractor.MPS2Result extract
+정보: Start to extract MPS2 KOR
+2월 19, 2019 6:03:29 오후 com.pluspro.ctrlwcs.extractor.MPS2Result insertTrg
+심각: ORA-38101: INSERT VALUES 절에 부적합한 열이 있음: "TB_EQP_RSLT"."CUST"
+
+java.sql.SQLException: ORA-38101: INSERT VALUES 절에 부적합한 열이 있음: "TB_EQP_RSLT"."CUST"
+
+	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:494)
+	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:446)
+	at oracle.jdbc.driver.T4C8Oall.processError(T4C8Oall.java:1054)
+	at oracle.jdbc.driver.T4CTTIfun.receive(T4CTTIfun.java:623)
+	at oracle.jdbc.driver.T4CTTIfun.doRPC(T4CTTIfun.java:252)
+	at oracle.jdbc.driver.T4C8Oall.doOALL(T4C8Oall.java:612)
+	at oracle.jdbc.driver.T4CStatement.doOall8(T4CStatement.java:213)
+	at oracle.jdbc.driver.T4CStatement.doOall8(T4CStatement.java:37)
+	at oracle.jdbc.driver.T4CStatement.executeForRows(T4CStatement.java:896)
+	at oracle.jdbc.driver.OracleStatement.doExecuteWithTimeout(OracleStatement.java:1119)
+	at oracle.jdbc.driver.OracleStatement.executeInternal(OracleStatement.java:1737)
+	at oracle.jdbc.driver.OracleStatement.execute(OracleStatement.java:1692)
+	at oracle.jdbc.driver.OracleStatementWrapper.execute(OracleStatementWrapper.java:300)
+	at com.pluspro.ctrlwcs.extractor.MPS2Result.insertTrg(MPS2Result.java:317)
+	at com.pluspro.ctrlwcs.extractor.MPS2Result.extract(MPS2Result.java:53)
+	at com.pluspro.ctrlwcs.CtrlWcs_MPS2.main(CtrlWcs_MPS2.java:111)
+Caused by: Error : 38101, Position : 0, Sql = MERGE INTO TB_EQP_RSLT
+USING(																													
+    SELECT '20190220' BDATE, 'DT'CENTER_CD, 'DM01_03141' EQUIP_ID,		
+           '동탄' CENTER_NM, '코레일 1호기' EQUIP_NM, '2' ORD,		
+           116 CUST_CNT, 0 CUST,												
+           0 PLAN_BOX, 0 BOX,													
+           28477 PLAN_PCS, 1880 PCS,													
+           652 PLAN_SKU, 12 SKU,													
+           TO_DATE('20190219 175447', 'yyyymmdd hh24miss') START_TM, NULL END_TM														
+      FROM DUAL																										
+) ORG 																													
+ON (TB_EQP_RSLT.BDATE = ORG.BDATE AND TB_EQP_RSLT.CENTER_CD = ORG.CENTER_CD AND 										
+    TB_EQP_RSLT.EQUIP_ID = ORG.EQUIP_ID AND TB_EQP_RSLT.ORD = ORG.ORD) 												
+WHEN MATCHED THEN 																										
+  UPDATE SET CUST_CNT = ORG.CUST_CNT,																					
+             CUST = ORG.CUST,																							
+             PLAN_BOX = ORG.PLAN_BOX,																					
+             BOX = ORG.BOX,																							
+             PLAN_SKU = ORG.PLAN_SKU,																					
+             SKU = ORG.SKU,																							
+             PLAN_PCS = ORG.PLAN_PCS,																					
+             PCS = ORG.PCS,																							
+             START_TM = ORG.START_TM,																					
+             END_TM = ORG.END_TM,																						
+             UPD_DT = SYSDATE																							
+WHEN NOT MATCHED THEN 																									
+  INSERT(BDATE, CENTER_CD, EQUIP_ID, CENTER_NM, EQUIP_NM, ORD, CUST_CNT, CUST,											
+         PLAN_BOX, BOX, PLAN_PCS, PCS, PLAN_SKU, SKU, START_TM, END_TM, REG_DT, UPD_DT) 								
+  VALUES(ORG.BDATE, ORG.CENTER_CD, ORG.EQUIP_ID, ORG.CENTER_NM, ORG.EQUIP_NM, ORG.ORD, ORG.CUST_CNT, CUST,				
+         ORG.PLAN_BOX, ORG.BOX, ORG.PLAN_PCS, ORG.PCS, ORG.PLAN_SKU, ORG.SKU, ORG.START_TM, ORG.END_TM, SYSDATE, SYSDATE), OriginalSql = MERGE INTO TB_EQP_RSLT
+USING(																													
+    SELECT '20190220' BDATE, 'DT'CENTER_CD, 'DM01_03141' EQUIP_ID,		
+           '동탄' CENTER_NM, '코레일 1호기' EQUIP_NM, '2' ORD,		
+           116 CUST_CNT, 0 CUST,												
+           0 PLAN_BOX, 0 BOX,													
+           28477 PLAN_PCS, 1880 PCS,													
+           652 PLAN_SKU, 12 SKU,													
+           TO_DATE('20190219 175447', 'yyyymmdd hh24miss') START_TM, NULL END_TM														
+      FROM DUAL																										
+) ORG 																													
+ON (TB_EQP_RSLT.BDATE = ORG.BDATE AND TB_EQP_RSLT.CENTER_CD = ORG.CENTER_CD AND 										
+    TB_EQP_RSLT.EQUIP_ID = ORG.EQUIP_ID AND TB_EQP_RSLT.ORD = ORG.ORD) 												
+WHEN MATCHED THEN 																										
+  UPDATE SET CUST_CNT = ORG.CUST_CNT,																					
+             CUST = ORG.CUST,																							
+             PLAN_BOX = ORG.PLAN_BOX,																					
+             BOX = ORG.BOX,																							
+             PLAN_SKU = ORG.PLAN_SKU,																					
+             SKU = ORG.SKU,																							
+             PLAN_PCS = ORG.PLAN_PCS,																					
+             PCS = ORG.PCS,																							
+             START_TM = ORG.START_TM,																					
+             END_TM = ORG.END_TM,																						
+             UPD_DT = SYSDATE																							
+WHEN NOT MATCHED THEN 																									
+  INSERT(BDATE, CENTER_CD, EQUIP_ID, CENTER_NM, EQUIP_NM, ORD, CUST_CNT, CUST,											
+         PLAN_BOX, BOX, PLAN_PCS, PCS, PLAN_SKU, SKU, START_TM, END_TM, REG_DT, UPD_DT) 								
+  VALUES(ORG.BDATE, ORG.CENTER_CD, ORG.EQUIP_ID, ORG.CENTER_NM, ORG.EQUIP_NM, ORG.ORD, ORG.CUST_CNT, CUST,				
+         ORG.PLAN_BOX, ORG.BOX, ORG.PLAN_PCS, ORG.PCS, ORG.PLAN_SKU, ORG.SKU, ORG.START_TM, ORG.END_TM, SYSDATE, SYSDATE), Error Msg = ORA-38101: INSERT VALUES 절에 부적합한 열이 있음: "TB_EQP_RSLT"."CUST"
+
+	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:498)
+	... 15 more
+
+2월 19, 2019 6:03:29 오후 com.pluspro.ctrlwcs.extractor.MPS2Result extract
+정보: End to extract MPS2KOR
+2월 19, 2019 6:03:29 오후 com.pluspro.ctrlwcs.CtrlWcs_MPS2 main
+정보: End CtrlWcs_MPS2 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+2월 19, 2019 6:04:50 오후 com.pluspro.ctrlwcs.CtrlWcs_MPS2 main
+정보: Start CtrlWcs_MPS2 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+2월 19, 2019 6:04:50 오후 com.pluspro.ctrlwcs.CtrlWcs_MPS2 main
+정보: CMD : KOR
+2월 19, 2019 6:04:50 오후 com.pluspro.ctrlwcs.CtrlWcs_MPS2 main
+정보: Conf File : conf.properties
+2월 19, 2019 6:04:50 오후 com.pluspro.ctrlwcs.CtrlWcs_MPS2 main
+정보: -----------------------------------------------------------
+CTRLWCS Database
+-----------------------------------------------------------
+ctrlwcs.ip : 10.68.2.76
+ctrlwcs.port : 1555
+ctrlwcs.sid : PCTRLWCS
+-----------------------------------------------------------
+MPS2.0 �ڷ��� Database
+-----------------------------------------------------------
+mps2_korail.ip : 128.11.1.211
+mps2_korail.port : 1433
+mps2_korail.sid : WS_HI_0314_DA1
+
+2월 19, 2019 6:04:55 오후 com.pluspro.ctrlwcs.CtrlWcs_MPS2 main
+정보: -----------------------------------------------------------
+DB Connection Instances
+-----------------------------------------------------------
+ctrlWcsCon : oracle.jdbc.driver.T4CConnection@1fa268de
+mps2KorailCon : ConnectionID:1 ClientConnectionId: e126e0ca-7d12-471a-9f25-c68cf748f93b
+mps2EEDBoxCon : null
+mps2EEDSubdivisionCon : null
+
+2월 19, 2019 6:04:55 오후 com.pluspro.ctrlwcs.extractor.MPS2Result extract
+정보: Start to extract MPS2 KOR
+2월 19, 2019 6:05:00 오후 com.pluspro.ctrlwcs.extractor.MPS2Result insertTrg
+정보: Extracted 2 Datas
+2월 19, 2019 6:05:00 오후 com.pluspro.ctrlwcs.extractor.MPS2Result extract
+정보: End to extract MPS2KOR
+2월 19, 2019 6:05:00 오후 com.pluspro.ctrlwcs.CtrlWcs_MPS2 main
+정보: End CtrlWcs_MPS2 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+2월 19, 2019 6:06:00 오후 com.pluspro.ctrlwcs.CtrlWcs_MPS2 main
+정보: Start CtrlWcs_MPS2 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+2월 19, 2019 6:06:00 오후 com.pluspro.ctrlwcs.CtrlWcs_MPS2 main
+정보: CMD : KOR
+2월 19, 2019 6:06:00 오후 com.pluspro.ctrlwcs.CtrlWcs_MPS2 main
+정보: Conf File : conf.properties
+2월 19, 2019 6:06:00 오후 com.pluspro.ctrlwcs.CtrlWcs_MPS2 main
+정보: -----------------------------------------------------------
+CTRLWCS Database
+-----------------------------------------------------------
+ctrlwcs.ip : 10.68.2.76
+ctrlwcs.port : 1555
+ctrlwcs.sid : PCTRLWCS
+-----------------------------------------------------------
+MPS2.0 �ڷ��� Database
+-----------------------------------------------------------
+mps2_korail.ip : 128.11.1.211
+mps2_korail.port : 1433
+mps2_korail.sid : WS_HI_0314_DA1
+
+2월 19, 2019 6:06:01 오후 com.pluspro.ctrlwcs.CtrlWcs_MPS2 main
+정보: -----------------------------------------------------------
+DB Connection Instances
+-----------------------------------------------------------
+ctrlWcsCon : oracle.jdbc.driver.T4CConnection@4f18837a
+mps2KorailCon : ConnectionID:1 ClientConnectionId: 27cd1532-18ce-475c-be01-c75e34105fbe
+mps2EEDBoxCon : null
+mps2EEDSubdivisionCon : null
+
+2월 19, 2019 6:06:01 오후 com.pluspro.ctrlwcs.extractor.MPS2Result extract
+정보: Start to extract MPS2 KOR
+2월 19, 2019 6:06:07 오후 com.pluspro.ctrlwcs.extractor.MPS2Result insertTrg
+정보: Extracted 2 Datas
+2월 19, 2019 6:06:07 오후 com.pluspro.ctrlwcs.extractor.MPS2Result extract
+정보: End to extract MPS2KOR
+2월 19, 2019 6:06:07 오후 com.pluspro.ctrlwcs.CtrlWcs_MPS2 main
+정보: End CtrlWcs_MPS2 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

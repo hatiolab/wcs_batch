@@ -1,0 +1,93 @@
+Feb 19, 2019 11:48:41 PM com.pluspro.ctrlwcs.CtrlWcs_Chute main
+정보: Start CtrlWcs_Chute ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Feb 19, 2019 11:48:41 PM com.pluspro.ctrlwcs.CtrlWcs_Chute main
+정보: Conf File : conf.properties
+Feb 19, 2019 11:48:41 PM com.pluspro.ctrlwcs.CtrlWcs_Chute main
+정보: -----------------------------------------------------------
+CTRLWCS Database
+-----------------------------------------------------------
+ctrlwcs.ip : 10.68.2.76
+ctrlwcs.port : 1555
+ctrlwcs.sid : PCTRLWCS
+-----------------------------------------------------------
+WCS Database
+-----------------------------------------------------------
+wcs.ip : 10.211.174.53
+wcs.port : 1525
+wcs.sid : PCJDTWCS
+-----------------------------------------------------------
+CHUTE Database
+-----------------------------------------------------------
+chute.ip : 10.211.174.71
+chute.port : 1433
+chute.sid : WCS.MonitoringSystem
+
+Feb 19, 2019 11:48:42 PM com.pluspro.ctrlwcs.CtrlWcs_Chute main
+심각: Error
+java.sql.SQLException: 로케일을 인식할 수 없습니다.
+	at oracle.jdbc.driver.T4CTTIoauthenticate.setSessionFields(T4CTTIoauthenticate.java:1493)
+	at oracle.jdbc.driver.T4CTTIoauthenticate.<init>(T4CTTIoauthenticate.java:291)
+	at oracle.jdbc.driver.T4CConnection.logon(T4CConnection.java:599)
+	at oracle.jdbc.driver.PhysicalConnection.connect(PhysicalConnection.java:688)
+	at oracle.jdbc.driver.T4CDriverExtension.getConnection(T4CDriverExtension.java:39)
+	at oracle.jdbc.driver.OracleDriver.connect(OracleDriver.java:691)
+	at java.sql.DriverManager.getConnection(DriverManager.java:664)
+	at java.sql.DriverManager.getConnection(DriverManager.java:247)
+	at com.pluspro.ctrlwcs.connecter.OracleConnecter.open(OracleConnecter.java:29)
+	at com.pluspro.ctrlwcs.connecter.ConnectionHelper.getOracleConnection(ConnectionHelper.java:9)
+	at com.pluspro.ctrlwcs.CtrlWcs_Chute.main(CtrlWcs_Chute.java:82)
+
+Feb 19, 2019 11:48:42 PM com.pluspro.ctrlwcs.CtrlWcs_Chute main
+정보: End CtrlWcs_Chute ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+2월 19, 2019 11:48:57 오후 com.pluspro.ctrlwcs.CtrlWcs_Chute main
+정보: Start CtrlWcs_Chute ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+2월 19, 2019 11:48:57 오후 com.pluspro.ctrlwcs.CtrlWcs_Chute main
+정보: Conf File : conf.properties
+2월 19, 2019 11:48:57 오후 com.pluspro.ctrlwcs.CtrlWcs_Chute main
+정보: -----------------------------------------------------------
+CTRLWCS Database
+-----------------------------------------------------------
+ctrlwcs.ip : 10.68.2.76
+ctrlwcs.port : 1555
+ctrlwcs.sid : PCTRLWCS
+-----------------------------------------------------------
+WCS Database
+-----------------------------------------------------------
+wcs.ip : 10.211.174.53
+wcs.port : 1525
+wcs.sid : PCJDTWCS
+-----------------------------------------------------------
+CHUTE Database
+-----------------------------------------------------------
+chute.ip : 10.211.174.71
+chute.port : 1433
+chute.sid : WCS.MonitoringSystem
+
+2월 19, 2019 11:48:58 오후 com.pluspro.ctrlwcs.CtrlWcs_Chute main
+정보: -----------------------------------------------------------
+DB Connection Instances
+-----------------------------------------------------------
+ctrlWcsCon : oracle.jdbc.driver.T4CConnection@6b927fb
+wcsCon : oracle.jdbc.driver.T4CConnection@7fee8714
+chuteCon   : ConnectionID:1 ClientConnectionId: ee3df5b9-7ac7-4d0e-9e7f-d2e61b0640c2
+
+2월 19, 2019 11:48:58 오후 com.pluspro.ctrlwcs.extractor.ChuteStatus extract
+정보: Start to extract ChuteStatus
+2월 19, 2019 11:49:00 오후 com.pluspro.ctrlwcs.extractor.ChuteStatus insertTrg
+정보: Extracted 226 Datas
+2월 19, 2019 11:49:00 오후 com.pluspro.ctrlwcs.extractor.ChuteStatus extract
+정보: Finish to extract ChuteStatus
+2월 19, 2019 11:49:00 오후 com.pluspro.ctrlwcs.extractor.ChuteResult extract
+정보: Start to extract ChuteResult
+2월 19, 2019 11:49:24 오후 com.pluspro.ctrlwcs.extractor.ChuteResult insertTrg
+정보: Extracted 226 Datas
+2월 19, 2019 11:49:24 오후 com.pluspro.ctrlwcs.extractor.ChuteResult extract
+정보: Finish to extract ChuteResult
+2월 19, 2019 11:49:24 오후 com.pluspro.ctrlwcs.extractor.EquipmentStatus extract
+정보: Start to extract EquipmentStatus
+2월 19, 2019 11:49:24 오후 com.pluspro.ctrlwcs.extractor.EquipmentStatus insertTrg
+정보: Extracted 35 Datas
+2월 19, 2019 11:49:24 오후 com.pluspro.ctrlwcs.extractor.EquipmentStatus extract
+정보: Finish to extract EquipmentStatus
+2월 19, 2019 11:49:24 오후 com.pluspro.ctrlwcs.CtrlWcs_Chute main
+정보: End CtrlWcs_Chute ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

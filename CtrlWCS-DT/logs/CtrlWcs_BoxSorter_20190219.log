@@ -1,0 +1,155 @@
+Feb 19, 2019 11:40:09 PM com.pluspro.ctrlwcs.CtrlWcs_BoxSorter main
+정보: Start CtrlWcs_BoxSorter ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Feb 19, 2019 11:40:09 PM com.pluspro.ctrlwcs.CtrlWcs_BoxSorter main
+정보: Conf File : conf.properties
+Feb 19, 2019 11:40:09 PM com.pluspro.ctrlwcs.CtrlWcs_BoxSorter main
+정보: -----------------------------------------------------------
+CTRLWCS Database
+-----------------------------------------------------------
+ctrlwcs.ip : 10.68.2.76
+ctrlwcs.port : 1555
+ctrlwcs.sid : PCTRLWCS
+-----------------------------------------------------------
+WCS Database
+-----------------------------------------------------------
+wcs.ip : 10.211.174.53
+wcs.port : 1525
+wcs.sid : PCJDTWCS
+
+Feb 19, 2019 11:40:10 PM com.pluspro.ctrlwcs.CtrlWcs_BoxSorter main
+심각: Error
+java.sql.SQLException: 로케일을 인식할 수 없습니다.
+	at oracle.jdbc.driver.T4CTTIoauthenticate.setSessionFields(T4CTTIoauthenticate.java:1493)
+	at oracle.jdbc.driver.T4CTTIoauthenticate.<init>(T4CTTIoauthenticate.java:291)
+	at oracle.jdbc.driver.T4CConnection.logon(T4CConnection.java:599)
+	at oracle.jdbc.driver.PhysicalConnection.connect(PhysicalConnection.java:688)
+	at oracle.jdbc.driver.T4CDriverExtension.getConnection(T4CDriverExtension.java:39)
+	at oracle.jdbc.driver.OracleDriver.connect(OracleDriver.java:691)
+	at java.sql.DriverManager.getConnection(DriverManager.java:664)
+	at java.sql.DriverManager.getConnection(DriverManager.java:247)
+	at com.pluspro.ctrlwcs.connecter.OracleConnecter.open(OracleConnecter.java:29)
+	at com.pluspro.ctrlwcs.connecter.ConnectionHelper.getOracleConnection(ConnectionHelper.java:9)
+	at com.pluspro.ctrlwcs.CtrlWcs_BoxSorter.main(CtrlWcs_BoxSorter.java:58)
+
+Feb 19, 2019 11:40:10 PM com.pluspro.ctrlwcs.CtrlWcs_BoxSorter main
+정보: End CtrlWcs_BoxSorter ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+2월 19, 2019 11:40:31 오후 com.pluspro.ctrlwcs.CtrlWcs_BoxSorter main
+정보: Start CtrlWcs_BoxSorter ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+2월 19, 2019 11:40:31 오후 com.pluspro.ctrlwcs.CtrlWcs_BoxSorter main
+정보: Conf File : conf.properties
+2월 19, 2019 11:40:31 오후 com.pluspro.ctrlwcs.CtrlWcs_BoxSorter main
+정보: -----------------------------------------------------------
+CTRLWCS Database
+-----------------------------------------------------------
+ctrlwcs.ip : 10.68.2.76
+ctrlwcs.port : 1555
+ctrlwcs.sid : PCTRLWCS
+-----------------------------------------------------------
+WCS Database
+-----------------------------------------------------------
+wcs.ip : 10.211.174.53
+wcs.port : 1525
+wcs.sid : PCJDTWCS
+
+2월 19, 2019 11:40:32 오후 com.pluspro.ctrlwcs.CtrlWcs_BoxSorter main
+정보: -----------------------------------------------------------
+DB Connection Instances
+-----------------------------------------------------------
+ctrlWcsCon : oracle.jdbc.driver.T4CConnection@3e58a80e
+wcsCon : oracle.jdbc.driver.T4CConnection@4229bb3f
+
+2월 19, 2019 11:40:32 오후 com.pluspro.ctrlwcs.extractor.BoxSorterResult extract
+정보: Start to extract BOX ����
+2월 19, 2019 11:41:30 오후 com.pluspro.ctrlwcs.CtrlWcs_BoxSorter main
+정보: Start CtrlWcs_BoxSorter ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+2월 19, 2019 11:41:30 오후 com.pluspro.ctrlwcs.CtrlWcs_BoxSorter main
+정보: Conf File : conf.properties
+2월 19, 2019 11:41:30 오후 com.pluspro.ctrlwcs.CtrlWcs_BoxSorter main
+정보: -----------------------------------------------------------
+CTRLWCS Database
+-----------------------------------------------------------
+ctrlwcs.ip : 10.68.2.76
+ctrlwcs.port : 1555
+ctrlwcs.sid : PCTRLWCS
+-----------------------------------------------------------
+WCS Database
+-----------------------------------------------------------
+wcs.ip : 10.211.174.53
+wcs.port : 1525
+wcs.sid : PCJDTWCS
+
+2월 19, 2019 11:41:31 오후 com.pluspro.ctrlwcs.CtrlWcs_BoxSorter main
+정보: -----------------------------------------------------------
+DB Connection Instances
+-----------------------------------------------------------
+ctrlWcsCon : oracle.jdbc.driver.T4CConnection@5876a9af
+wcsCon : oracle.jdbc.driver.T4CConnection@611889f4
+
+2월 19, 2019 11:41:31 오후 com.pluspro.ctrlwcs.extractor.BoxSorterResult extract
+정보: Start to extract BOX ����
+2월 19, 2019 11:43:39 오후 com.pluspro.ctrlwcs.CtrlWcs_BoxSorter main
+정보: Start CtrlWcs_BoxSorter ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+2월 19, 2019 11:43:39 오후 com.pluspro.ctrlwcs.CtrlWcs_BoxSorter main
+정보: Conf File : conf.properties
+2월 19, 2019 11:43:39 오후 com.pluspro.ctrlwcs.CtrlWcs_BoxSorter main
+정보: -----------------------------------------------------------
+CTRLWCS Database
+-----------------------------------------------------------
+ctrlwcs.ip : 10.68.2.76
+ctrlwcs.port : 1555
+ctrlwcs.sid : PCTRLWCS
+-----------------------------------------------------------
+WCS Database
+-----------------------------------------------------------
+wcs.ip : 10.211.174.53
+wcs.port : 1525
+wcs.sid : PCJDTWCS
+
+2월 19, 2019 11:43:40 오후 com.pluspro.ctrlwcs.CtrlWcs_BoxSorter main
+정보: -----------------------------------------------------------
+DB Connection Instances
+-----------------------------------------------------------
+ctrlWcsCon : oracle.jdbc.driver.T4CConnection@5876a9af
+wcsCon : oracle.jdbc.driver.T4CConnection@611889f4
+
+2월 19, 2019 11:43:40 오후 com.pluspro.ctrlwcs.extractor.BoxSorterResult extract
+정보: Start to extract BOX ����
+2월 19, 2019 11:44:28 오후 com.pluspro.ctrlwcs.extractor.BoxSorterResult insertTrg
+정보: Extracted 4 Datas
+2월 19, 2019 11:44:28 오후 com.pluspro.ctrlwcs.extractor.BoxSorterResult extract
+정보: End to extract BOX �ڽ� ����
+2월 19, 2019 11:44:28 오후 com.pluspro.ctrlwcs.CtrlWcs_BoxSorter main
+정보: End CtrlWcs_BoxSorter ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+2월 19, 2019 11:45:37 오후 com.pluspro.ctrlwcs.CtrlWcs_BoxSorter main
+정보: Start CtrlWcs_BoxSorter ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+2월 19, 2019 11:45:37 오후 com.pluspro.ctrlwcs.CtrlWcs_BoxSorter main
+정보: Conf File : conf.properties
+2월 19, 2019 11:45:37 오후 com.pluspro.ctrlwcs.CtrlWcs_BoxSorter main
+정보: -----------------------------------------------------------
+CTRLWCS Database
+-----------------------------------------------------------
+ctrlwcs.ip : 10.68.2.76
+ctrlwcs.port : 1555
+ctrlwcs.sid : PCTRLWCS
+-----------------------------------------------------------
+WCS Database
+-----------------------------------------------------------
+wcs.ip : 10.211.174.53
+wcs.port : 1525
+wcs.sid : PCJDTWCS
+
+2월 19, 2019 11:45:38 오후 com.pluspro.ctrlwcs.CtrlWcs_BoxSorter main
+정보: -----------------------------------------------------------
+DB Connection Instances
+-----------------------------------------------------------
+ctrlWcsCon : oracle.jdbc.driver.T4CConnection@a514af7
+wcsCon : oracle.jdbc.driver.T4CConnection@6da21078
+
+2월 19, 2019 11:45:38 오후 com.pluspro.ctrlwcs.extractor.BoxSorterResult extract
+정보: Start to extract BOX ����
+2월 19, 2019 11:45:41 오후 com.pluspro.ctrlwcs.extractor.BoxSorterResult insertTrg
+정보: Extracted 4 Datas
+2월 19, 2019 11:45:41 오후 com.pluspro.ctrlwcs.extractor.BoxSorterResult extract
+정보: End to extract BOX �ڽ� ����
+2월 19, 2019 11:45:41 오후 com.pluspro.ctrlwcs.CtrlWcs_BoxSorter main
+정보: End CtrlWcs_BoxSorter ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

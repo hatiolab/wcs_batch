@@ -1,0 +1,188 @@
+1월 09, 2019 9:31:09 오전 com.pluspro.ctrlwcs.CtrlWcs_MPS2 main
+정보: Start CtrlWcs_MPS2 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+1월 09, 2019 9:31:09 오전 com.pluspro.ctrlwcs.CtrlWcs_MPS2 main
+정보: Conf File : conf.properties
+1월 09, 2019 9:31:09 오전 com.pluspro.ctrlwcs.CtrlWcs_MPS2 main
+정보: -----------------------------------------------------------
+CTRLWCS Database
+-----------------------------------------------------------
+ctrlwcs.ip : 127.0.0.1
+ctrlwcs.port : 1521
+ctrlwcs.sid : orcl
+-----------------------------------------------------------
+MPS2.0 코레일 Database
+-----------------------------------------------------------
+mps2_korail.ip : 127.0.0.1
+mps2_korail.port : 1433
+mps2_korail.sid : sib
+-----------------------------------------------------------
+MPS2.0 EED 박스 Database
+-----------------------------------------------------------
+mps2_eedbox.ip : 127.0.0.1
+mps2_eedbox.port : 1433
+mps2_eedbox.sid : sib
+-----------------------------------------------------------
+MPS2.0 EED 소분 Database
+-----------------------------------------------------------
+mps2_eedsubdivision.ip : 127.0.0.1
+mps2_eedsubdivision.port : 1433
+mps2_eedsubdivision.sid : sib
+
+1월 09, 2019 9:31:12 오전 com.pluspro.ctrlwcs.CtrlWcs_MPS2 main
+정보: -----------------------------------------------------------
+DB Connection Instances
+-----------------------------------------------------------
+ctrlWcsCon : oracle.jdbc.driver.T4CConnection@2b80d80f
+mps2KorailCon : ConnectionID:1 ClientConnectionId: dc5b63b4-1f1a-4468-a320-6f9baf3d7ddb
+mps2EEDBoxCon : ConnectionID:2 ClientConnectionId: b8bbbe4e-0ece-4816-833b-143a2f369c8a
+mps2EEDSubdivisionCon : ConnectionID:3 ClientConnectionId: f841dfc9-947f-48a4-8a05-b5856028f712
+
+1월 09, 2019 9:31:12 오전 com.pluspro.ctrlwcs.extractor.MPS2Result extract
+정보: Start to extract MPS2
+1월 09, 2019 9:31:12 오전 com.pluspro.ctrlwcs.extractor.MPS2Result insertTrg
+정보: Extracted 0 Datas
+1월 09, 2019 9:31:12 오전 com.pluspro.ctrlwcs.extractor.MPS2Result extract
+정보: End to extract MPS2
+1월 09, 2019 9:31:12 오전 com.pluspro.ctrlwcs.CtrlWcs_MPS2 main
+정보: End CtrlWcs_MPS2 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+1월 09, 2019 9:50:35 오전 com.pluspro.ctrlwcs.CtrlWcs_MPS2 main
+정보: Start CtrlWcs_MPS2 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+1월 09, 2019 9:50:35 오전 com.pluspro.ctrlwcs.CtrlWcs_MPS2 main
+정보: Conf File : conf.properties
+1월 09, 2019 9:50:35 오전 com.pluspro.ctrlwcs.CtrlWcs_MPS2 main
+정보: -----------------------------------------------------------
+CTRLWCS Database
+-----------------------------------------------------------
+ctrlwcs.ip : 127.0.0.1
+ctrlwcs.port : 1521
+ctrlwcs.sid : orcl
+-----------------------------------------------------------
+MPS2.0 코레일 Database
+-----------------------------------------------------------
+mps2_korail.ip : 127.0.0.1
+mps2_korail.port : 1433
+mps2_korail.sid : sib
+-----------------------------------------------------------
+MPS2.0 EED 박스 Database
+-----------------------------------------------------------
+mps2_eedbox.ip : 127.0.0.1
+mps2_eedbox.port : 1433
+mps2_eedbox.sid : sib
+-----------------------------------------------------------
+MPS2.0 EED 소분 Database
+-----------------------------------------------------------
+mps2_eedsubdivision.ip : 127.0.0.1
+mps2_eedsubdivision.port : 1433
+mps2_eedsubdivision.sid : sib
+
+1월 09, 2019 9:50:38 오전 com.pluspro.ctrlwcs.CtrlWcs_MPS2 main
+정보: -----------------------------------------------------------
+DB Connection Instances
+-----------------------------------------------------------
+ctrlWcsCon : oracle.jdbc.driver.T4CConnection@2b80d80f
+mps2KorailCon : ConnectionID:1 ClientConnectionId: 7914a784-741d-4fbe-ae9d-c3928d46697e
+mps2EEDBoxCon : ConnectionID:2 ClientConnectionId: b058660c-6bf8-4814-a607-70092c3e030c
+mps2EEDSubdivisionCon : ConnectionID:3 ClientConnectionId: b45297c5-e039-4c5d-9b71-ea1291244f50
+
+1월 09, 2019 9:50:38 오전 com.pluspro.ctrlwcs.extractor.MPS2Result extract
+정보: Start to extract MPS2
+1월 09, 2019 9:50:38 오전 com.pluspro.ctrlwcs.extractor.MPS2Result insertTrg
+정보: Extracted 0 Datas
+1월 09, 2019 9:50:38 오전 com.pluspro.ctrlwcs.extractor.MPS2Result extract
+정보: End to extract MPS2
+1월 09, 2019 9:50:38 오전 com.pluspro.ctrlwcs.CtrlWcs_MPS2 main
+정보: End CtrlWcs_MPS2 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+1월 09, 2019 10:00:33 오전 com.pluspro.ctrlwcs.CtrlWcs_MPS2 main
+정보: Start CtrlWcs_MPS2 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+1월 09, 2019 10:00:33 오전 com.pluspro.ctrlwcs.CtrlWcs_MPS2 main
+정보: Conf File : conf.properties
+1월 09, 2019 10:00:33 오전 com.pluspro.ctrlwcs.CtrlWcs_MPS2 main
+정보: -----------------------------------------------------------
+CTRLWCS Database
+-----------------------------------------------------------
+ctrlwcs.ip : 127.0.0.1
+ctrlwcs.port : 1521
+ctrlwcs.sid : orcl
+-----------------------------------------------------------
+MPS2.0 코레일 Database
+-----------------------------------------------------------
+mps2_korail.ip : 127.0.0.1
+mps2_korail.port : 1433
+mps2_korail.sid : sib
+-----------------------------------------------------------
+MPS2.0 EED 박스 Database
+-----------------------------------------------------------
+mps2_eedbox.ip : 127.0.0.1
+mps2_eedbox.port : 1433
+mps2_eedbox.sid : sib
+-----------------------------------------------------------
+MPS2.0 EED 소분 Database
+-----------------------------------------------------------
+mps2_eedsubdivision.ip : 127.0.0.1
+mps2_eedsubdivision.port : 1433
+mps2_eedsubdivision.sid : sib
+
+1월 09, 2019 10:00:36 오전 com.pluspro.ctrlwcs.CtrlWcs_MPS2 main
+정보: -----------------------------------------------------------
+DB Connection Instances
+-----------------------------------------------------------
+ctrlWcsCon : oracle.jdbc.driver.T4CConnection@2b80d80f
+mps2KorailCon : ConnectionID:1 ClientConnectionId: d407350b-d801-47ae-a8e0-ecbfe76718ca
+mps2EEDBoxCon : ConnectionID:2 ClientConnectionId: 5064a414-a712-44f1-8333-40fd35e5560c
+mps2EEDSubdivisionCon : ConnectionID:3 ClientConnectionId: 7142dde5-9563-44ed-9d4e-c76c22e94197
+
+1월 09, 2019 10:00:36 오전 com.pluspro.ctrlwcs.extractor.MPS2Result extract
+정보: Start to extract MPS2
+1월 09, 2019 10:00:36 오전 com.pluspro.ctrlwcs.extractor.MPS2Result insertTrg
+정보: Extracted 0 Datas
+1월 09, 2019 10:00:36 오전 com.pluspro.ctrlwcs.extractor.MPS2Result extract
+정보: End to extract MPS2
+1월 09, 2019 10:00:36 오전 com.pluspro.ctrlwcs.CtrlWcs_MPS2 main
+정보: End CtrlWcs_MPS2 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+1월 09, 2019 10:12:01 오전 com.pluspro.ctrlwcs.CtrlWcs_MPS2 main
+정보: Start CtrlWcs_MPS2 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+1월 09, 2019 10:12:01 오전 com.pluspro.ctrlwcs.CtrlWcs_MPS2 main
+정보: Conf File : conf.properties
+1월 09, 2019 10:12:01 오전 com.pluspro.ctrlwcs.CtrlWcs_MPS2 main
+정보: -----------------------------------------------------------
+CTRLWCS Database
+-----------------------------------------------------------
+ctrlwcs.ip : 127.0.0.1
+ctrlwcs.port : 1521
+ctrlwcs.sid : orcl
+-----------------------------------------------------------
+MPS2.0 코레일 Database
+-----------------------------------------------------------
+mps2_korail.ip : 127.0.0.1
+mps2_korail.port : 1433
+mps2_korail.sid : sib
+-----------------------------------------------------------
+MPS2.0 EED 박스 Database
+-----------------------------------------------------------
+mps2_eedbox.ip : 127.0.0.1
+mps2_eedbox.port : 1433
+mps2_eedbox.sid : sib
+-----------------------------------------------------------
+MPS2.0 EED 소분 Database
+-----------------------------------------------------------
+mps2_eedsubdivision.ip : 127.0.0.1
+mps2_eedsubdivision.port : 1433
+mps2_eedsubdivision.sid : sib
+
+1월 09, 2019 10:12:04 오전 com.pluspro.ctrlwcs.CtrlWcs_MPS2 main
+정보: -----------------------------------------------------------
+DB Connection Instances
+-----------------------------------------------------------
+ctrlWcsCon : oracle.jdbc.driver.T4CConnection@2b80d80f
+mps2KorailCon : ConnectionID:1 ClientConnectionId: 5144bb35-2797-4056-92cd-f5ee6cd72151
+mps2EEDBoxCon : ConnectionID:2 ClientConnectionId: 6ddeebcb-3de0-451e-b274-3197f57a4d88
+mps2EEDSubdivisionCon : ConnectionID:3 ClientConnectionId: 0eff6e53-714f-4ab9-97d4-2568d785bd53
+
+1월 09, 2019 10:12:04 오전 com.pluspro.ctrlwcs.extractor.MPS2Result extract
+정보: Start to extract MPS2
+1월 09, 2019 10:12:04 오전 com.pluspro.ctrlwcs.extractor.MPS2Result insertTrg
+정보: Extracted 0 Datas
+1월 09, 2019 10:12:04 오전 com.pluspro.ctrlwcs.extractor.MPS2Result extract
+정보: End to extract MPS2
+1월 09, 2019 10:12:04 오전 com.pluspro.ctrlwcs.CtrlWcs_MPS2 main
+정보: End CtrlWcs_MPS2 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

@@ -1,0 +1,567 @@
+1월 14, 2019 4:10:38 오후 com.pluspro.ctrlwcs.CtrlWcs_NormalTempOnline main
+정보: Start CtrlWcs_NormalTempOnline ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+1월 14, 2019 4:10:38 오후 com.pluspro.ctrlwcs.CtrlWcs_NormalTempOnline main
+정보: Conf File : conf.properties
+1월 14, 2019 4:10:38 오후 com.pluspro.ctrlwcs.CtrlWcs_NormalTempOnline main
+정보: -----------------------------------------------------------
+CTRLWCS Database
+-----------------------------------------------------------
+ctrlwcs.ip : 127.0.0.1
+ctrlwcs.port : 1521
+ctrlwcs.sid : orcl
+-----------------------------------------------------------
+WCS Database
+-----------------------------------------------------------
+wcs.ip : 127.0.0.1
+wcs.port : 1521
+wcs.sid : orcl
+
+1월 14, 2019 4:10:41 오후 com.pluspro.ctrlwcs.CtrlWcs_NormalTempOnline main
+정보: -----------------------------------------------------------
+DB Connection Instances
+-----------------------------------------------------------
+ctrlWcsCon : oracle.jdbc.driver.T4CConnection@2b80d80f
+wcsCon : oracle.jdbc.driver.T4CConnection@6483f5ae
+
+1월 14, 2019 4:10:41 오후 com.pluspro.ctrlwcs.extractor.NormalTempOnlineResult extract
+정보: Start to extract 상온 온라인
+1월 14, 2019 4:10:41 오후 com.pluspro.ctrlwcs.extractor.NormalTempOnlineResult extractOrg
+심각: ORA-00942: 테이블 또는 뷰가 존재하지 않습니다
+
+java.sql.SQLSyntaxErrorException: ORA-00942: 테이블 또는 뷰가 존재하지 않습니다
+
+	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:494)
+	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:446)
+	at oracle.jdbc.driver.T4C8Oall.processError(T4C8Oall.java:1054)
+	at oracle.jdbc.driver.T4CTTIfun.receive(T4CTTIfun.java:623)
+	at oracle.jdbc.driver.T4CTTIfun.doRPC(T4CTTIfun.java:252)
+	at oracle.jdbc.driver.T4C8Oall.doOALL(T4C8Oall.java:612)
+	at oracle.jdbc.driver.T4CStatement.doOall8(T4CStatement.java:213)
+	at oracle.jdbc.driver.T4CStatement.doOall8(T4CStatement.java:37)
+	at oracle.jdbc.driver.T4CStatement.executeForDescribe(T4CStatement.java:733)
+	at oracle.jdbc.driver.OracleStatement.executeMaybeDescribe(OracleStatement.java:904)
+	at oracle.jdbc.driver.OracleStatement.doExecuteWithTimeout(OracleStatement.java:1082)
+	at oracle.jdbc.driver.OracleStatement.executeQuery(OracleStatement.java:1276)
+	at oracle.jdbc.driver.OracleStatementWrapper.executeQuery(OracleStatementWrapper.java:366)
+	at com.pluspro.ctrlwcs.extractor.NormalTempOnlineResult.extractOrg(NormalTempOnlineResult.java:112)
+	at com.pluspro.ctrlwcs.extractor.NormalTempOnlineResult.extract(NormalTempOnlineResult.java:31)
+	at com.pluspro.ctrlwcs.CtrlWcs_NormalTempOnline.main(CtrlWcs_NormalTempOnline.java:67)
+Caused by: Error : 942, Position : 169, Sql = SELECT A.BDATE,																										
+       A.CENTER_CD,																									
+       A.EQUIP_ID,																										
+       (SELECT COM_DETAIL_NM FROM TB_COMM_CODE_MST																		
+          WHERE COM_HEAD_CD = 'CENTER_CD' AND COM_DETAIL_CD = A.CENTER_CD) CENTER_NM,									
+       (SELECT EQP_NM FROM TB_COMM_EQUIP_MST																			
+         WHERE EQP_ID = A.EQUIP_ID) EQUIP_NM,																			
+       A.ORD,																											
+       COUNT(DISTINCT A.BIZPTNR_CD) CUST_CNT,																			
+       SUM(A.PLAN_BOX) PLAN_BOX,																						
+       SUM(A.BOX) BOX,																									
+       SUM(A.PLAN_PCS) PLAN_PCS,																						
+       SUM(A.PCS) PCS,																									
+       COUNT(DISTINCT A.SKU_CD) PLAN_SKU,																				
+       COUNT(DISTINCT A.CMP_SKU_CD) SKU,																				
+       COUNT(DISTINCT B.ORD_NO) PLAN_INV,																				
+       COUNT(DISTINCT B.CMP_ORD_NO) INV																				
+  FROM (SELECT TB_WCS_ORD_HDR.WRK_IDCT_YMD BDATE,																		
+               TB_WCS_ORD_HDR.CENTER_CD CENTER_CD,																		
+               TB_WCS_ORD_DTL.EQP_ID EQUIP_ID,																			
+               TB_WCS_ORD_DTL.BTCH_SEQ ORD,																			
+               TB_WCS_ORD_HDR.BIZPTNR_CD,																				
+               TB_WCS_ORD_DTL.SKU_CD,																					
+	       DECODE(SUM(TB_WCS_ORD_DTL.PLAN_QTY), SUM(TB_WCS_ORD_DTL.RSLT_QTY), TB_WCS_ORD_DTL.SKU_CD, NULL) CMP_SKU_CD,	
+               SUM(TB_WCS_ORD_DTL.PLAN_QTY) PLAN_PCS,																	
+               SUM(TB_WCS_ORD_DTL.RSLT_QTY) PCS,																		
+               SUM(CEIL(TB_WCS_ORD_DTL.PLAN_QTY / TB_WCS_ORD_DTL.BOX_IN_QTY)) PLAN_BOX,								
+               SUM(CEIL(TB_WCS_ORD_DTL.RSLT_QTY / TB_WCS_ORD_DTL.BOX_IN_QTY)) BOX										
+          FROM TB_WCS_ORD_DTL,																							
+               TB_WCS_ORD_HDR																							
+         WHERE TB_WCS_ORD_HDR.WRK_IDCT_YMD > '20190114'														
+           AND TB_WCS_ORD_DTL.EQP_ID IN ('DC50', 'DC05', 'DC51', 'DC54')												
+           AND TB_WCS_ORD_DTL.WH_ID = TB_WCS_ORD_HDR.WH_ID																
+           AND TB_WCS_ORD_DTL.CENTER_CD = TB_WCS_ORD_HDR.CENTER_CD														
+           AND TB_WCS_ORD_DTL.WAV_NO = TB_WCS_ORD_HDR.WAV_NO															
+           AND TB_WCS_ORD_DTL.ORD_NO = TB_WCS_ORD_HDR.ORD_NO															
+           AND TB_WCS_ORD_DTL.EQP_ID IS NOT NULL																		
+           AND TB_WCS_ORD_DTL.BTCH_SEQ IS NOT NULL																		
+         GROUP BY TB_WCS_ORD_HDR.WRK_IDCT_YMD, TB_WCS_ORD_HDR.CENTER_CD,												
+                  TB_WCS_ORD_DTL.EQP_ID, TB_WCS_ORD_HDR.BIZPTNR_CD,													
+                  TB_WCS_ORD_DTL.SKU_CD, TB_WCS_ORD_DTL.BTCH_SEQ) A,													
+       (SELECT TB_WCS_ORD_HDR.WRK_IDCT_YMD BDATE,																		
+               TB_WCS_ORD_HDR.CENTER_CD CENTER_CD,																		
+               TB_WCS_ORD_DTL.EQP_ID EQUIP_ID,																			
+               TB_WCS_ORD_DTL.BTCH_SEQ ORD,																			
+               TB_WCS_ORD_DTL.ORD_NO,																					
+	       DECODE(SUM(TB_WCS_ORD_DTL.PLAN_QTY), SUM(TB_WCS_ORD_DTL.RSLT_QTY), TB_WCS_ORD_DTL.ORD_NO, NULL) CMP_ORD_NO	
+          FROM TB_WCS_ORD_DTL,																							
+               TB_WCS_ORD_HDR																							
+         WHERE TB_WCS_ORD_HDR.WRK_IDCT_YMD > '20190114'														
+           AND TB_WCS_ORD_DTL.EQP_ID IN ('DC50', 'DC05', 'DC51', 'DC54')												
+           AND TB_WCS_ORD_DTL.WH_ID = TB_WCS_ORD_HDR.WH_ID																
+           AND TB_WCS_ORD_DTL.CENTER_CD = TB_WCS_ORD_HDR.CENTER_CD														
+           AND TB_WCS_ORD_DTL.WAV_NO = TB_WCS_ORD_HDR.WAV_NO															
+           AND TB_WCS_ORD_DTL.ORD_NO = TB_WCS_ORD_HDR.ORD_NO															
+           AND TB_WCS_ORD_DTL.EQP_ID IS NOT NULL																		
+           AND TB_WCS_ORD_DTL.BTCH_SEQ IS NOT NULL																		
+         GROUP BY TB_WCS_ORD_HDR.WRK_IDCT_YMD, TB_WCS_ORD_HDR.CENTER_CD,												
+                  TB_WCS_ORD_DTL.EQP_ID,TB_WCS_ORD_DTL.BTCH_SEQ,														
+		  TB_WCS_ORD_DTL.ORD_NO) B																						
+ WHERE A.BDATE = B.BDATE																								
+   AND A.CENTER_CD = B.CENTER_CD																						
+   AND A.EQUIP_ID = B.EQUIP_ID																							
+   AND A.ORD = B.ORD																									
+ GROUP BY  A.BDATE, A.CENTER_CD, A.EQUIP_ID,																			
+           A.CENTER_CD, A.EQUIP_ID, A.ORD, OriginalSql = SELECT A.BDATE,																										
+       A.CENTER_CD,																									
+       A.EQUIP_ID,																										
+       (SELECT COM_DETAIL_NM FROM TB_COMM_CODE_MST																		
+          WHERE COM_HEAD_CD = 'CENTER_CD' AND COM_DETAIL_CD = A.CENTER_CD) CENTER_NM,									
+       (SELECT EQP_NM FROM TB_COMM_EQUIP_MST																			
+         WHERE EQP_ID = A.EQUIP_ID) EQUIP_NM,																			
+       A.ORD,																											
+       COUNT(DISTINCT A.BIZPTNR_CD) CUST_CNT,																			
+       SUM(A.PLAN_BOX) PLAN_BOX,																						
+       SUM(A.BOX) BOX,																									
+       SUM(A.PLAN_PCS) PLAN_PCS,																						
+       SUM(A.PCS) PCS,																									
+       COUNT(DISTINCT A.SKU_CD) PLAN_SKU,																				
+       COUNT(DISTINCT A.CMP_SKU_CD) SKU,																				
+       COUNT(DISTINCT B.ORD_NO) PLAN_INV,																				
+       COUNT(DISTINCT B.CMP_ORD_NO) INV																				
+  FROM (SELECT TB_WCS_ORD_HDR.WRK_IDCT_YMD BDATE,																		
+               TB_WCS_ORD_HDR.CENTER_CD CENTER_CD,																		
+               TB_WCS_ORD_DTL.EQP_ID EQUIP_ID,																			
+               TB_WCS_ORD_DTL.BTCH_SEQ ORD,																			
+               TB_WCS_ORD_HDR.BIZPTNR_CD,																				
+               TB_WCS_ORD_DTL.SKU_CD,																					
+	       DECODE(SUM(TB_WCS_ORD_DTL.PLAN_QTY), SUM(TB_WCS_ORD_DTL.RSLT_QTY), TB_WCS_ORD_DTL.SKU_CD, NULL) CMP_SKU_CD,	
+               SUM(TB_WCS_ORD_DTL.PLAN_QTY) PLAN_PCS,																	
+               SUM(TB_WCS_ORD_DTL.RSLT_QTY) PCS,																		
+               SUM(CEIL(TB_WCS_ORD_DTL.PLAN_QTY / TB_WCS_ORD_DTL.BOX_IN_QTY)) PLAN_BOX,								
+               SUM(CEIL(TB_WCS_ORD_DTL.RSLT_QTY / TB_WCS_ORD_DTL.BOX_IN_QTY)) BOX										
+          FROM TB_WCS_ORD_DTL,																							
+               TB_WCS_ORD_HDR																							
+         WHERE TB_WCS_ORD_HDR.WRK_IDCT_YMD > '20190114'														
+           AND TB_WCS_ORD_DTL.EQP_ID IN ('DC50', 'DC05', 'DC51', 'DC54')												
+           AND TB_WCS_ORD_DTL.WH_ID = TB_WCS_ORD_HDR.WH_ID																
+           AND TB_WCS_ORD_DTL.CENTER_CD = TB_WCS_ORD_HDR.CENTER_CD														
+           AND TB_WCS_ORD_DTL.WAV_NO = TB_WCS_ORD_HDR.WAV_NO															
+           AND TB_WCS_ORD_DTL.ORD_NO = TB_WCS_ORD_HDR.ORD_NO															
+           AND TB_WCS_ORD_DTL.EQP_ID IS NOT NULL																		
+           AND TB_WCS_ORD_DTL.BTCH_SEQ IS NOT NULL																		
+         GROUP BY TB_WCS_ORD_HDR.WRK_IDCT_YMD, TB_WCS_ORD_HDR.CENTER_CD,												
+                  TB_WCS_ORD_DTL.EQP_ID, TB_WCS_ORD_HDR.BIZPTNR_CD,													
+                  TB_WCS_ORD_DTL.SKU_CD, TB_WCS_ORD_DTL.BTCH_SEQ) A,													
+       (SELECT TB_WCS_ORD_HDR.WRK_IDCT_YMD BDATE,																		
+               TB_WCS_ORD_HDR.CENTER_CD CENTER_CD,																		
+               TB_WCS_ORD_DTL.EQP_ID EQUIP_ID,																			
+               TB_WCS_ORD_DTL.BTCH_SEQ ORD,																			
+               TB_WCS_ORD_DTL.ORD_NO,																					
+	       DECODE(SUM(TB_WCS_ORD_DTL.PLAN_QTY), SUM(TB_WCS_ORD_DTL.RSLT_QTY), TB_WCS_ORD_DTL.ORD_NO, NULL) CMP_ORD_NO	
+          FROM TB_WCS_ORD_DTL,																							
+               TB_WCS_ORD_HDR																							
+         WHERE TB_WCS_ORD_HDR.WRK_IDCT_YMD > '20190114'														
+           AND TB_WCS_ORD_DTL.EQP_ID IN ('DC50', 'DC05', 'DC51', 'DC54')												
+           AND TB_WCS_ORD_DTL.WH_ID = TB_WCS_ORD_HDR.WH_ID																
+           AND TB_WCS_ORD_DTL.CENTER_CD = TB_WCS_ORD_HDR.CENTER_CD														
+           AND TB_WCS_ORD_DTL.WAV_NO = TB_WCS_ORD_HDR.WAV_NO															
+           AND TB_WCS_ORD_DTL.ORD_NO = TB_WCS_ORD_HDR.ORD_NO															
+           AND TB_WCS_ORD_DTL.EQP_ID IS NOT NULL																		
+           AND TB_WCS_ORD_DTL.BTCH_SEQ IS NOT NULL																		
+         GROUP BY TB_WCS_ORD_HDR.WRK_IDCT_YMD, TB_WCS_ORD_HDR.CENTER_CD,												
+                  TB_WCS_ORD_DTL.EQP_ID,TB_WCS_ORD_DTL.BTCH_SEQ,														
+		  TB_WCS_ORD_DTL.ORD_NO) B																						
+ WHERE A.BDATE = B.BDATE																								
+   AND A.CENTER_CD = B.CENTER_CD																						
+   AND A.EQUIP_ID = B.EQUIP_ID																							
+   AND A.ORD = B.ORD																									
+ GROUP BY  A.BDATE, A.CENTER_CD, A.EQUIP_ID,																			
+           A.CENTER_CD, A.EQUIP_ID, A.ORD, Error Msg = ORA-00942: 테이블 또는 뷰가 존재하지 않습니다
+
+	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:498)
+	... 15 more
+
+1월 14, 2019 4:10:41 오후 com.pluspro.ctrlwcs.extractor.NormalTempOnlineResult insertTrg
+정보: Extracted 0 Datas
+1월 14, 2019 4:10:41 오후 com.pluspro.ctrlwcs.extractor.NormalTempOnlineResult extract
+정보: End to extract 상온 온라인
+1월 14, 2019 4:10:41 오후 com.pluspro.ctrlwcs.CtrlWcs_NormalTempOnline main
+정보: End CtrlWcs_NormalTempOnline ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+1월 14, 2019 4:13:45 오후 com.pluspro.ctrlwcs.CtrlWcs_NormalTempOnline main
+정보: Start CtrlWcs_NormalTempOnline ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+1월 14, 2019 4:13:45 오후 com.pluspro.ctrlwcs.CtrlWcs_NormalTempOnline main
+정보: Conf File : conf.properties
+1월 14, 2019 4:13:45 오후 com.pluspro.ctrlwcs.CtrlWcs_NormalTempOnline main
+정보: -----------------------------------------------------------
+CTRLWCS Database
+-----------------------------------------------------------
+ctrlwcs.ip : 127.0.0.1
+ctrlwcs.port : 1521
+ctrlwcs.sid : orcl
+-----------------------------------------------------------
+WCS Database
+-----------------------------------------------------------
+wcs.ip : 127.0.0.1
+wcs.port : 1521
+wcs.sid : orcl
+
+1월 14, 2019 4:13:47 오후 com.pluspro.ctrlwcs.CtrlWcs_NormalTempOnline main
+정보: -----------------------------------------------------------
+DB Connection Instances
+-----------------------------------------------------------
+ctrlWcsCon : oracle.jdbc.driver.T4CConnection@2b80d80f
+wcsCon : oracle.jdbc.driver.T4CConnection@6483f5ae
+
+1월 14, 2019 4:13:47 오후 com.pluspro.ctrlwcs.extractor.NormalTempOnlineResult extract
+정보: Start to extract 상온 온라인
+1월 14, 2019 4:13:47 오후 com.pluspro.ctrlwcs.extractor.NormalTempOnlineResult extractOrg
+심각: ORA-00942: 테이블 또는 뷰가 존재하지 않습니다
+
+java.sql.SQLSyntaxErrorException: ORA-00942: 테이블 또는 뷰가 존재하지 않습니다
+
+	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:494)
+	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:446)
+	at oracle.jdbc.driver.T4C8Oall.processError(T4C8Oall.java:1054)
+	at oracle.jdbc.driver.T4CTTIfun.receive(T4CTTIfun.java:623)
+	at oracle.jdbc.driver.T4CTTIfun.doRPC(T4CTTIfun.java:252)
+	at oracle.jdbc.driver.T4C8Oall.doOALL(T4C8Oall.java:612)
+	at oracle.jdbc.driver.T4CStatement.doOall8(T4CStatement.java:213)
+	at oracle.jdbc.driver.T4CStatement.doOall8(T4CStatement.java:37)
+	at oracle.jdbc.driver.T4CStatement.executeForDescribe(T4CStatement.java:733)
+	at oracle.jdbc.driver.OracleStatement.executeMaybeDescribe(OracleStatement.java:904)
+	at oracle.jdbc.driver.OracleStatement.doExecuteWithTimeout(OracleStatement.java:1082)
+	at oracle.jdbc.driver.OracleStatement.executeQuery(OracleStatement.java:1276)
+	at oracle.jdbc.driver.OracleStatementWrapper.executeQuery(OracleStatementWrapper.java:366)
+	at com.pluspro.ctrlwcs.extractor.NormalTempOnlineResult.extractOrg(NormalTempOnlineResult.java:112)
+	at com.pluspro.ctrlwcs.extractor.NormalTempOnlineResult.extract(NormalTempOnlineResult.java:31)
+	at com.pluspro.ctrlwcs.CtrlWcs_NormalTempOnline.main(CtrlWcs_NormalTempOnline.java:67)
+Caused by: Error : 942, Position : 169, Sql = SELECT A.BDATE,																										
+       A.CENTER_CD,																									
+       A.EQUIP_ID,																										
+       (SELECT COM_DETAIL_NM FROM TB_COMM_CODE_MST																		
+          WHERE COM_HEAD_CD = 'CENTER_CD' AND COM_DETAIL_CD = A.CENTER_CD) CENTER_NM,									
+       (SELECT EQP_NM FROM TB_COMM_EQUIP_MST																			
+         WHERE EQP_ID = A.EQUIP_ID) EQUIP_NM,																			
+       A.ORD,																											
+       COUNT(DISTINCT A.BIZPTNR_CD) CUST_CNT,																			
+       SUM(A.PLAN_BOX) PLAN_BOX,																						
+       SUM(A.BOX) BOX,																									
+       SUM(A.PLAN_PCS) PLAN_PCS,																						
+       SUM(A.PCS) PCS,																									
+       COUNT(DISTINCT A.SKU_CD) PLAN_SKU,																				
+       COUNT(DISTINCT A.CMP_SKU_CD) SKU,																				
+       COUNT(DISTINCT B.ORD_NO) PLAN_INV,																				
+       COUNT(DISTINCT B.CMP_ORD_NO) INV																				
+  FROM (SELECT TB_WCS_ORD_HDR.WRK_IDCT_YMD BDATE,																		
+               TB_WCS_ORD_HDR.CENTER_CD CENTER_CD,																		
+               TB_WCS_ORD_DTL.EQP_ID EQUIP_ID,																			
+               TB_WCS_ORD_DTL.BTCH_SEQ ORD,																			
+               TB_WCS_ORD_HDR.BIZPTNR_CD,																				
+               TB_WCS_ORD_DTL.SKU_CD,																					
+	       DECODE(SUM(TB_WCS_ORD_DTL.PLAN_QTY), SUM(TB_WCS_ORD_DTL.RSLT_QTY), TB_WCS_ORD_DTL.SKU_CD, NULL) CMP_SKU_CD,	
+               SUM(TB_WCS_ORD_DTL.PLAN_QTY) PLAN_PCS,																	
+               SUM(TB_WCS_ORD_DTL.RSLT_QTY) PCS,																		
+               SUM(CEIL(TB_WCS_ORD_DTL.PLAN_QTY / TB_WCS_ORD_DTL.BOX_IN_QTY)) PLAN_BOX,								
+               SUM(CEIL(TB_WCS_ORD_DTL.RSLT_QTY / TB_WCS_ORD_DTL.BOX_IN_QTY)) BOX										
+          FROM TB_WCS_ORD_DTL,																							
+               TB_WCS_ORD_HDR																							
+         WHERE TB_WCS_ORD_HDR.WRK_IDCT_YMD > '20190114'														
+           AND TB_WCS_ORD_DTL.EQP_ID IN ('DC50', 'DC05', 'DC51', 'DC54')												
+           AND TB_WCS_ORD_DTL.WH_ID = TB_WCS_ORD_HDR.WH_ID																
+           AND TB_WCS_ORD_DTL.CENTER_CD = TB_WCS_ORD_HDR.CENTER_CD														
+           AND TB_WCS_ORD_DTL.WAV_NO = TB_WCS_ORD_HDR.WAV_NO															
+           AND TB_WCS_ORD_DTL.ORD_NO = TB_WCS_ORD_HDR.ORD_NO															
+           AND TB_WCS_ORD_DTL.EQP_ID IS NOT NULL																		
+           AND TB_WCS_ORD_DTL.BTCH_SEQ IS NOT NULL																		
+         GROUP BY TB_WCS_ORD_HDR.WRK_IDCT_YMD, TB_WCS_ORD_HDR.CENTER_CD,												
+                  TB_WCS_ORD_DTL.EQP_ID, TB_WCS_ORD_HDR.BIZPTNR_CD,													
+                  TB_WCS_ORD_DTL.SKU_CD, TB_WCS_ORD_DTL.BTCH_SEQ) A,													
+       (SELECT TB_WCS_ORD_HDR.WRK_IDCT_YMD BDATE,																		
+               TB_WCS_ORD_HDR.CENTER_CD CENTER_CD,																		
+               TB_WCS_ORD_DTL.EQP_ID EQUIP_ID,																			
+               TB_WCS_ORD_DTL.BTCH_SEQ ORD,																			
+               TB_WCS_ORD_DTL.ORD_NO,																					
+	       DECODE(SUM(TB_WCS_ORD_DTL.PLAN_QTY), SUM(TB_WCS_ORD_DTL.RSLT_QTY), TB_WCS_ORD_DTL.ORD_NO, NULL) CMP_ORD_NO	
+          FROM TB_WCS_ORD_DTL,																							
+               TB_WCS_ORD_HDR																							
+         WHERE TB_WCS_ORD_HDR.WRK_IDCT_YMD > '20190114'														
+           AND TB_WCS_ORD_DTL.EQP_ID IN ('DC50', 'DC05', 'DC51', 'DC54')												
+           AND TB_WCS_ORD_DTL.WH_ID = TB_WCS_ORD_HDR.WH_ID																
+           AND TB_WCS_ORD_DTL.CENTER_CD = TB_WCS_ORD_HDR.CENTER_CD														
+           AND TB_WCS_ORD_DTL.WAV_NO = TB_WCS_ORD_HDR.WAV_NO															
+           AND TB_WCS_ORD_DTL.ORD_NO = TB_WCS_ORD_HDR.ORD_NO															
+           AND TB_WCS_ORD_DTL.EQP_ID IS NOT NULL																		
+           AND TB_WCS_ORD_DTL.BTCH_SEQ IS NOT NULL																		
+         GROUP BY TB_WCS_ORD_HDR.WRK_IDCT_YMD, TB_WCS_ORD_HDR.CENTER_CD,												
+                  TB_WCS_ORD_DTL.EQP_ID,TB_WCS_ORD_DTL.BTCH_SEQ,														
+		  TB_WCS_ORD_DTL.ORD_NO) B																						
+ WHERE A.BDATE = B.BDATE																								
+   AND A.CENTER_CD = B.CENTER_CD																						
+   AND A.EQUIP_ID = B.EQUIP_ID																							
+   AND A.ORD = B.ORD																									
+ GROUP BY  A.BDATE, A.CENTER_CD, A.EQUIP_ID,																			
+           A.CENTER_CD, A.EQUIP_ID, A.ORD, OriginalSql = SELECT A.BDATE,																										
+       A.CENTER_CD,																									
+       A.EQUIP_ID,																										
+       (SELECT COM_DETAIL_NM FROM TB_COMM_CODE_MST																		
+          WHERE COM_HEAD_CD = 'CENTER_CD' AND COM_DETAIL_CD = A.CENTER_CD) CENTER_NM,									
+       (SELECT EQP_NM FROM TB_COMM_EQUIP_MST																			
+         WHERE EQP_ID = A.EQUIP_ID) EQUIP_NM,																			
+       A.ORD,																											
+       COUNT(DISTINCT A.BIZPTNR_CD) CUST_CNT,																			
+       SUM(A.PLAN_BOX) PLAN_BOX,																						
+       SUM(A.BOX) BOX,																									
+       SUM(A.PLAN_PCS) PLAN_PCS,																						
+       SUM(A.PCS) PCS,																									
+       COUNT(DISTINCT A.SKU_CD) PLAN_SKU,																				
+       COUNT(DISTINCT A.CMP_SKU_CD) SKU,																				
+       COUNT(DISTINCT B.ORD_NO) PLAN_INV,																				
+       COUNT(DISTINCT B.CMP_ORD_NO) INV																				
+  FROM (SELECT TB_WCS_ORD_HDR.WRK_IDCT_YMD BDATE,																		
+               TB_WCS_ORD_HDR.CENTER_CD CENTER_CD,																		
+               TB_WCS_ORD_DTL.EQP_ID EQUIP_ID,																			
+               TB_WCS_ORD_DTL.BTCH_SEQ ORD,																			
+               TB_WCS_ORD_HDR.BIZPTNR_CD,																				
+               TB_WCS_ORD_DTL.SKU_CD,																					
+	       DECODE(SUM(TB_WCS_ORD_DTL.PLAN_QTY), SUM(TB_WCS_ORD_DTL.RSLT_QTY), TB_WCS_ORD_DTL.SKU_CD, NULL) CMP_SKU_CD,	
+               SUM(TB_WCS_ORD_DTL.PLAN_QTY) PLAN_PCS,																	
+               SUM(TB_WCS_ORD_DTL.RSLT_QTY) PCS,																		
+               SUM(CEIL(TB_WCS_ORD_DTL.PLAN_QTY / TB_WCS_ORD_DTL.BOX_IN_QTY)) PLAN_BOX,								
+               SUM(CEIL(TB_WCS_ORD_DTL.RSLT_QTY / TB_WCS_ORD_DTL.BOX_IN_QTY)) BOX										
+          FROM TB_WCS_ORD_DTL,																							
+               TB_WCS_ORD_HDR																							
+         WHERE TB_WCS_ORD_HDR.WRK_IDCT_YMD > '20190114'														
+           AND TB_WCS_ORD_DTL.EQP_ID IN ('DC50', 'DC05', 'DC51', 'DC54')												
+           AND TB_WCS_ORD_DTL.WH_ID = TB_WCS_ORD_HDR.WH_ID																
+           AND TB_WCS_ORD_DTL.CENTER_CD = TB_WCS_ORD_HDR.CENTER_CD														
+           AND TB_WCS_ORD_DTL.WAV_NO = TB_WCS_ORD_HDR.WAV_NO															
+           AND TB_WCS_ORD_DTL.ORD_NO = TB_WCS_ORD_HDR.ORD_NO															
+           AND TB_WCS_ORD_DTL.EQP_ID IS NOT NULL																		
+           AND TB_WCS_ORD_DTL.BTCH_SEQ IS NOT NULL																		
+         GROUP BY TB_WCS_ORD_HDR.WRK_IDCT_YMD, TB_WCS_ORD_HDR.CENTER_CD,												
+                  TB_WCS_ORD_DTL.EQP_ID, TB_WCS_ORD_HDR.BIZPTNR_CD,													
+                  TB_WCS_ORD_DTL.SKU_CD, TB_WCS_ORD_DTL.BTCH_SEQ) A,													
+       (SELECT TB_WCS_ORD_HDR.WRK_IDCT_YMD BDATE,																		
+               TB_WCS_ORD_HDR.CENTER_CD CENTER_CD,																		
+               TB_WCS_ORD_DTL.EQP_ID EQUIP_ID,																			
+               TB_WCS_ORD_DTL.BTCH_SEQ ORD,																			
+               TB_WCS_ORD_DTL.ORD_NO,																					
+	       DECODE(SUM(TB_WCS_ORD_DTL.PLAN_QTY), SUM(TB_WCS_ORD_DTL.RSLT_QTY), TB_WCS_ORD_DTL.ORD_NO, NULL) CMP_ORD_NO	
+          FROM TB_WCS_ORD_DTL,																							
+               TB_WCS_ORD_HDR																							
+         WHERE TB_WCS_ORD_HDR.WRK_IDCT_YMD > '20190114'														
+           AND TB_WCS_ORD_DTL.EQP_ID IN ('DC50', 'DC05', 'DC51', 'DC54')												
+           AND TB_WCS_ORD_DTL.WH_ID = TB_WCS_ORD_HDR.WH_ID																
+           AND TB_WCS_ORD_DTL.CENTER_CD = TB_WCS_ORD_HDR.CENTER_CD														
+           AND TB_WCS_ORD_DTL.WAV_NO = TB_WCS_ORD_HDR.WAV_NO															
+           AND TB_WCS_ORD_DTL.ORD_NO = TB_WCS_ORD_HDR.ORD_NO															
+           AND TB_WCS_ORD_DTL.EQP_ID IS NOT NULL																		
+           AND TB_WCS_ORD_DTL.BTCH_SEQ IS NOT NULL																		
+         GROUP BY TB_WCS_ORD_HDR.WRK_IDCT_YMD, TB_WCS_ORD_HDR.CENTER_CD,												
+                  TB_WCS_ORD_DTL.EQP_ID,TB_WCS_ORD_DTL.BTCH_SEQ,														
+		  TB_WCS_ORD_DTL.ORD_NO) B																						
+ WHERE A.BDATE = B.BDATE																								
+   AND A.CENTER_CD = B.CENTER_CD																						
+   AND A.EQUIP_ID = B.EQUIP_ID																							
+   AND A.ORD = B.ORD																									
+ GROUP BY  A.BDATE, A.CENTER_CD, A.EQUIP_ID,																			
+           A.CENTER_CD, A.EQUIP_ID, A.ORD, Error Msg = ORA-00942: 테이블 또는 뷰가 존재하지 않습니다
+
+	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:498)
+	... 15 more
+
+1월 14, 2019 4:13:47 오후 com.pluspro.ctrlwcs.extractor.NormalTempOnlineResult insertTrg
+정보: Extracted 0 Datas
+1월 14, 2019 4:13:47 오후 com.pluspro.ctrlwcs.extractor.NormalTempOnlineResult extract
+정보: End to extract 상온 온라인
+1월 14, 2019 4:13:47 오후 com.pluspro.ctrlwcs.CtrlWcs_NormalTempOnline main
+정보: End CtrlWcs_NormalTempOnline ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+1월 14, 2019 4:16:49 오후 com.pluspro.ctrlwcs.CtrlWcs_NormalTempOnline main
+정보: Start CtrlWcs_NormalTempOnline ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+1월 14, 2019 4:16:49 오후 com.pluspro.ctrlwcs.CtrlWcs_NormalTempOnline main
+정보: Conf File : conf.properties
+1월 14, 2019 4:16:49 오후 com.pluspro.ctrlwcs.CtrlWcs_NormalTempOnline main
+정보: -----------------------------------------------------------
+CTRLWCS Database
+-----------------------------------------------------------
+ctrlwcs.ip : 127.0.0.1
+ctrlwcs.port : 1521
+ctrlwcs.sid : orcl
+-----------------------------------------------------------
+WCS Database
+-----------------------------------------------------------
+wcs.ip : 127.0.0.1
+wcs.port : 1521
+wcs.sid : orcl
+
+1월 14, 2019 4:16:52 오후 com.pluspro.ctrlwcs.CtrlWcs_NormalTempOnline main
+정보: -----------------------------------------------------------
+DB Connection Instances
+-----------------------------------------------------------
+ctrlWcsCon : oracle.jdbc.driver.T4CConnection@2b80d80f
+wcsCon : oracle.jdbc.driver.T4CConnection@6483f5ae
+
+1월 14, 2019 4:16:52 오후 com.pluspro.ctrlwcs.extractor.NormalTempOnlineResult extract
+정보: Start to extract 상온 온라인
+1월 14, 2019 4:16:52 오후 com.pluspro.ctrlwcs.extractor.NormalTempOnlineResult extractOrg
+심각: ORA-00942: 테이블 또는 뷰가 존재하지 않습니다
+
+java.sql.SQLSyntaxErrorException: ORA-00942: 테이블 또는 뷰가 존재하지 않습니다
+
+	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:494)
+	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:446)
+	at oracle.jdbc.driver.T4C8Oall.processError(T4C8Oall.java:1054)
+	at oracle.jdbc.driver.T4CTTIfun.receive(T4CTTIfun.java:623)
+	at oracle.jdbc.driver.T4CTTIfun.doRPC(T4CTTIfun.java:252)
+	at oracle.jdbc.driver.T4C8Oall.doOALL(T4C8Oall.java:612)
+	at oracle.jdbc.driver.T4CStatement.doOall8(T4CStatement.java:213)
+	at oracle.jdbc.driver.T4CStatement.doOall8(T4CStatement.java:37)
+	at oracle.jdbc.driver.T4CStatement.executeForDescribe(T4CStatement.java:733)
+	at oracle.jdbc.driver.OracleStatement.executeMaybeDescribe(OracleStatement.java:904)
+	at oracle.jdbc.driver.OracleStatement.doExecuteWithTimeout(OracleStatement.java:1082)
+	at oracle.jdbc.driver.OracleStatement.executeQuery(OracleStatement.java:1276)
+	at oracle.jdbc.driver.OracleStatementWrapper.executeQuery(OracleStatementWrapper.java:366)
+	at com.pluspro.ctrlwcs.extractor.NormalTempOnlineResult.extractOrg(NormalTempOnlineResult.java:112)
+	at com.pluspro.ctrlwcs.extractor.NormalTempOnlineResult.extract(NormalTempOnlineResult.java:31)
+	at com.pluspro.ctrlwcs.CtrlWcs_NormalTempOnline.main(CtrlWcs_NormalTempOnline.java:69)
+Caused by: Error : 942, Position : 169, Sql = SELECT A.BDATE,																										
+       A.CENTER_CD,																									
+       A.EQUIP_ID,																										
+       (SELECT COM_DETAIL_NM FROM TB_COMM_CODE_MST																		
+          WHERE COM_HEAD_CD = 'CENTER_CD' AND COM_DETAIL_CD = A.CENTER_CD) CENTER_NM,									
+       (SELECT EQP_NM FROM TB_COMM_EQUIP_MST																			
+         WHERE EQP_ID = A.EQUIP_ID) EQUIP_NM,																			
+       A.ORD,																											
+       COUNT(DISTINCT A.BIZPTNR_CD) CUST_CNT,																			
+       SUM(A.PLAN_BOX) PLAN_BOX,																						
+       SUM(A.BOX) BOX,																									
+       SUM(A.PLAN_PCS) PLAN_PCS,																						
+       SUM(A.PCS) PCS,																									
+       COUNT(DISTINCT A.SKU_CD) PLAN_SKU,																				
+       COUNT(DISTINCT A.CMP_SKU_CD) SKU,																				
+       COUNT(DISTINCT B.ORD_NO) PLAN_INV,																				
+       COUNT(DISTINCT B.CMP_ORD_NO) INV																				
+  FROM (SELECT TB_WCS_ORD_HDR.WRK_IDCT_YMD BDATE,																		
+               TB_WCS_ORD_HDR.CENTER_CD CENTER_CD,																		
+               TB_WCS_ORD_DTL.EQP_ID EQUIP_ID,																			
+               TB_WCS_ORD_DTL.BTCH_SEQ ORD,																			
+               TB_WCS_ORD_HDR.BIZPTNR_CD,																				
+               TB_WCS_ORD_DTL.SKU_CD,																					
+	       DECODE(SUM(TB_WCS_ORD_DTL.PLAN_QTY), SUM(TB_WCS_ORD_DTL.RSLT_QTY), TB_WCS_ORD_DTL.SKU_CD, NULL) CMP_SKU_CD,	
+               SUM(TB_WCS_ORD_DTL.PLAN_QTY) PLAN_PCS,																	
+               SUM(TB_WCS_ORD_DTL.RSLT_QTY) PCS,																		
+               SUM(CEIL(TB_WCS_ORD_DTL.PLAN_QTY / TB_WCS_ORD_DTL.BOX_IN_QTY)) PLAN_BOX,								
+               SUM(CEIL(TB_WCS_ORD_DTL.RSLT_QTY / TB_WCS_ORD_DTL.BOX_IN_QTY)) BOX										
+          FROM TB_WCS_ORD_DTL,																							
+               TB_WCS_ORD_HDR																							
+         WHERE TB_WCS_ORD_HDR.WRK_IDCT_YMD > '20190107'														
+           AND TB_WCS_ORD_DTL.EQP_ID IN ('DC50', 'DC05', 'DC51', 'DC54')												
+           AND TB_WCS_ORD_DTL.WH_ID = TB_WCS_ORD_HDR.WH_ID																
+           AND TB_WCS_ORD_DTL.CENTER_CD = TB_WCS_ORD_HDR.CENTER_CD														
+           AND TB_WCS_ORD_DTL.WAV_NO = TB_WCS_ORD_HDR.WAV_NO															
+           AND TB_WCS_ORD_DTL.ORD_NO = TB_WCS_ORD_HDR.ORD_NO															
+           AND TB_WCS_ORD_DTL.EQP_ID IS NOT NULL																		
+           AND TB_WCS_ORD_DTL.BTCH_SEQ IS NOT NULL																		
+         GROUP BY TB_WCS_ORD_HDR.WRK_IDCT_YMD, TB_WCS_ORD_HDR.CENTER_CD,												
+                  TB_WCS_ORD_DTL.EQP_ID, TB_WCS_ORD_HDR.BIZPTNR_CD,													
+                  TB_WCS_ORD_DTL.SKU_CD, TB_WCS_ORD_DTL.BTCH_SEQ) A,													
+       (SELECT TB_WCS_ORD_HDR.WRK_IDCT_YMD BDATE,																		
+               TB_WCS_ORD_HDR.CENTER_CD CENTER_CD,																		
+               TB_WCS_ORD_DTL.EQP_ID EQUIP_ID,																			
+               TB_WCS_ORD_DTL.BTCH_SEQ ORD,																			
+               TB_WCS_ORD_DTL.ORD_NO,																					
+	       DECODE(SUM(TB_WCS_ORD_DTL.PLAN_QTY), SUM(TB_WCS_ORD_DTL.RSLT_QTY), TB_WCS_ORD_DTL.ORD_NO, NULL) CMP_ORD_NO	
+          FROM TB_WCS_ORD_DTL,																							
+               TB_WCS_ORD_HDR																							
+         WHERE TB_WCS_ORD_HDR.WRK_IDCT_YMD > '20190107'														
+           AND TB_WCS_ORD_DTL.EQP_ID IN ('DC50', 'DC05', 'DC51', 'DC54')												
+           AND TB_WCS_ORD_DTL.WH_ID = TB_WCS_ORD_HDR.WH_ID																
+           AND TB_WCS_ORD_DTL.CENTER_CD = TB_WCS_ORD_HDR.CENTER_CD														
+           AND TB_WCS_ORD_DTL.WAV_NO = TB_WCS_ORD_HDR.WAV_NO															
+           AND TB_WCS_ORD_DTL.ORD_NO = TB_WCS_ORD_HDR.ORD_NO															
+           AND TB_WCS_ORD_DTL.EQP_ID IS NOT NULL																		
+           AND TB_WCS_ORD_DTL.BTCH_SEQ IS NOT NULL																		
+         GROUP BY TB_WCS_ORD_HDR.WRK_IDCT_YMD, TB_WCS_ORD_HDR.CENTER_CD,												
+                  TB_WCS_ORD_DTL.EQP_ID,TB_WCS_ORD_DTL.BTCH_SEQ,														
+		  TB_WCS_ORD_DTL.ORD_NO) B																						
+ WHERE A.BDATE = B.BDATE																								
+   AND A.CENTER_CD = B.CENTER_CD																						
+   AND A.EQUIP_ID = B.EQUIP_ID																							
+   AND A.ORD = B.ORD																									
+ GROUP BY  A.BDATE, A.CENTER_CD, A.EQUIP_ID,																			
+           A.CENTER_CD, A.EQUIP_ID, A.ORD, OriginalSql = SELECT A.BDATE,																										
+       A.CENTER_CD,																									
+       A.EQUIP_ID,																										
+       (SELECT COM_DETAIL_NM FROM TB_COMM_CODE_MST																		
+          WHERE COM_HEAD_CD = 'CENTER_CD' AND COM_DETAIL_CD = A.CENTER_CD) CENTER_NM,									
+       (SELECT EQP_NM FROM TB_COMM_EQUIP_MST																			
+         WHERE EQP_ID = A.EQUIP_ID) EQUIP_NM,																			
+       A.ORD,																											
+       COUNT(DISTINCT A.BIZPTNR_CD) CUST_CNT,																			
+       SUM(A.PLAN_BOX) PLAN_BOX,																						
+       SUM(A.BOX) BOX,																									
+       SUM(A.PLAN_PCS) PLAN_PCS,																						
+       SUM(A.PCS) PCS,																									
+       COUNT(DISTINCT A.SKU_CD) PLAN_SKU,																				
+       COUNT(DISTINCT A.CMP_SKU_CD) SKU,																				
+       COUNT(DISTINCT B.ORD_NO) PLAN_INV,																				
+       COUNT(DISTINCT B.CMP_ORD_NO) INV																				
+  FROM (SELECT TB_WCS_ORD_HDR.WRK_IDCT_YMD BDATE,																		
+               TB_WCS_ORD_HDR.CENTER_CD CENTER_CD,																		
+               TB_WCS_ORD_DTL.EQP_ID EQUIP_ID,																			
+               TB_WCS_ORD_DTL.BTCH_SEQ ORD,																			
+               TB_WCS_ORD_HDR.BIZPTNR_CD,																				
+               TB_WCS_ORD_DTL.SKU_CD,																					
+	       DECODE(SUM(TB_WCS_ORD_DTL.PLAN_QTY), SUM(TB_WCS_ORD_DTL.RSLT_QTY), TB_WCS_ORD_DTL.SKU_CD, NULL) CMP_SKU_CD,	
+               SUM(TB_WCS_ORD_DTL.PLAN_QTY) PLAN_PCS,																	
+               SUM(TB_WCS_ORD_DTL.RSLT_QTY) PCS,																		
+               SUM(CEIL(TB_WCS_ORD_DTL.PLAN_QTY / TB_WCS_ORD_DTL.BOX_IN_QTY)) PLAN_BOX,								
+               SUM(CEIL(TB_WCS_ORD_DTL.RSLT_QTY / TB_WCS_ORD_DTL.BOX_IN_QTY)) BOX										
+          FROM TB_WCS_ORD_DTL,																							
+               TB_WCS_ORD_HDR																							
+         WHERE TB_WCS_ORD_HDR.WRK_IDCT_YMD > '20190107'														
+           AND TB_WCS_ORD_DTL.EQP_ID IN ('DC50', 'DC05', 'DC51', 'DC54')												
+           AND TB_WCS_ORD_DTL.WH_ID = TB_WCS_ORD_HDR.WH_ID																
+           AND TB_WCS_ORD_DTL.CENTER_CD = TB_WCS_ORD_HDR.CENTER_CD														
+           AND TB_WCS_ORD_DTL.WAV_NO = TB_WCS_ORD_HDR.WAV_NO															
+           AND TB_WCS_ORD_DTL.ORD_NO = TB_WCS_ORD_HDR.ORD_NO															
+           AND TB_WCS_ORD_DTL.EQP_ID IS NOT NULL																		
+           AND TB_WCS_ORD_DTL.BTCH_SEQ IS NOT NULL																		
+         GROUP BY TB_WCS_ORD_HDR.WRK_IDCT_YMD, TB_WCS_ORD_HDR.CENTER_CD,												
+                  TB_WCS_ORD_DTL.EQP_ID, TB_WCS_ORD_HDR.BIZPTNR_CD,													
+                  TB_WCS_ORD_DTL.SKU_CD, TB_WCS_ORD_DTL.BTCH_SEQ) A,													
+       (SELECT TB_WCS_ORD_HDR.WRK_IDCT_YMD BDATE,																		
+               TB_WCS_ORD_HDR.CENTER_CD CENTER_CD,																		
+               TB_WCS_ORD_DTL.EQP_ID EQUIP_ID,																			
+               TB_WCS_ORD_DTL.BTCH_SEQ ORD,																			
+               TB_WCS_ORD_DTL.ORD_NO,																					
+	       DECODE(SUM(TB_WCS_ORD_DTL.PLAN_QTY), SUM(TB_WCS_ORD_DTL.RSLT_QTY), TB_WCS_ORD_DTL.ORD_NO, NULL) CMP_ORD_NO	
+          FROM TB_WCS_ORD_DTL,																							
+               TB_WCS_ORD_HDR																							
+         WHERE TB_WCS_ORD_HDR.WRK_IDCT_YMD > '20190107'														
+           AND TB_WCS_ORD_DTL.EQP_ID IN ('DC50', 'DC05', 'DC51', 'DC54')												
+           AND TB_WCS_ORD_DTL.WH_ID = TB_WCS_ORD_HDR.WH_ID																
+           AND TB_WCS_ORD_DTL.CENTER_CD = TB_WCS_ORD_HDR.CENTER_CD														
+           AND TB_WCS_ORD_DTL.WAV_NO = TB_WCS_ORD_HDR.WAV_NO															
+           AND TB_WCS_ORD_DTL.ORD_NO = TB_WCS_ORD_HDR.ORD_NO															
+           AND TB_WCS_ORD_DTL.EQP_ID IS NOT NULL																		
+           AND TB_WCS_ORD_DTL.BTCH_SEQ IS NOT NULL																		
+         GROUP BY TB_WCS_ORD_HDR.WRK_IDCT_YMD, TB_WCS_ORD_HDR.CENTER_CD,												
+                  TB_WCS_ORD_DTL.EQP_ID,TB_WCS_ORD_DTL.BTCH_SEQ,														
+		  TB_WCS_ORD_DTL.ORD_NO) B																						
+ WHERE A.BDATE = B.BDATE																								
+   AND A.CENTER_CD = B.CENTER_CD																						
+   AND A.EQUIP_ID = B.EQUIP_ID																							
+   AND A.ORD = B.ORD																									
+ GROUP BY  A.BDATE, A.CENTER_CD, A.EQUIP_ID,																			
+           A.CENTER_CD, A.EQUIP_ID, A.ORD, Error Msg = ORA-00942: 테이블 또는 뷰가 존재하지 않습니다
+
+	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:498)
+	... 15 more
+
+1월 14, 2019 4:16:52 오후 com.pluspro.ctrlwcs.extractor.NormalTempOnlineResult insertTrg
+정보: Extracted 0 Datas
+1월 14, 2019 4:16:52 오후 com.pluspro.ctrlwcs.extractor.NormalTempOnlineResult extract
+정보: End to extract 상온 온라인
+1월 14, 2019 4:16:52 오후 com.pluspro.ctrlwcs.CtrlWcs_NormalTempOnline main
+정보: End CtrlWcs_NormalTempOnline ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

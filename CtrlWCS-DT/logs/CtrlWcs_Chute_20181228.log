@@ -1,0 +1,269 @@
+12월 28, 2018 3:47:31 오후 com.pluspro.ctrlwcs.CtrlWcs_Chute main
+정보: Conf File : conf.properties
+12월 28, 2018 3:49:36 오후 com.pluspro.ctrlwcs.CtrlWcs_Chute main
+정보: Conf File : conf.properties
+12월 28, 2018 3:49:36 오후 com.pluspro.ctrlwcs.CtrlWcs_Chute main
+정보: null
+12월 28, 2018 3:49:36 오후 com.pluspro.ctrlwcs.CtrlWcs_Chute main
+경고: null
+12월 28, 2018 3:49:36 오후 com.pluspro.ctrlwcs.CtrlWcs_Chute main
+심각: Error
+java.lang.NullPointerException
+	at com.pluspro.ctrlwcs.CtrlWcs_Chute.main(CtrlWcs_Chute.java:48)
+
+12월 28, 2018 3:49:36 오후 com.pluspro.ctrlwcs.CtrlWcs_Chute main
+정보: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+12월 28, 2018 3:50:35 오후 com.pluspro.ctrlwcs.CtrlWcs_Chute main
+정보: Conf File : conf.properties
+12월 28, 2018 3:50:35 오후 com.pluspro.ctrlwcs.CtrlWcs_Chute main
+심각: Error
+java.lang.NullPointerException
+	at com.pluspro.ctrlwcs.CtrlWcs_Chute.main(CtrlWcs_Chute.java:48)
+
+12월 28, 2018 3:50:35 오후 com.pluspro.ctrlwcs.CtrlWcs_Chute main
+정보: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+12월 28, 2018 3:59:21 오후 com.pluspro.ctrlwcs.CtrlWcs_Chute main
+정보: Conf File : conf.properties
+12월 28, 2018 3:59:21 오후 com.pluspro.ctrlwcs.CtrlWcs_Chute main
+심각: Error
+java.lang.NullPointerException
+	at com.pluspro.ctrlwcs.CtrlWcs_Chute.main(CtrlWcs_Chute.java:48)
+
+12월 28, 2018 3:59:21 오후 com.pluspro.ctrlwcs.CtrlWcs_Chute main
+정보: -----------------------------------------------------------
+End
+-----------------------------------------------------------
+
+12월 28, 2018 4:03:22 오후 com.pluspro.ctrlwcs.CtrlWcs_Chute main
+정보: Start com.pluspro.ctrlwcs.CtrlWcs_Chute
+12월 28, 2018 4:03:22 오후 com.pluspro.ctrlwcs.CtrlWcs_Chute main
+정보: Conf File : conf.properties
+12월 28, 2018 4:03:22 오후 com.pluspro.ctrlwcs.CtrlWcs_Chute main
+심각: Error
+java.lang.NullPointerException
+	at com.pluspro.ctrlwcs.CtrlWcs_Chute.main(CtrlWcs_Chute.java:51)
+
+12월 28, 2018 4:03:22 오후 com.pluspro.ctrlwcs.CtrlWcs_Chute main
+정보: End com.pluspro.ctrlwcs.CtrlWcs_Chute
+12월 28, 2018 4:03:38 오후 com.pluspro.ctrlwcs.CtrlWcs_Chute main
+정보: Start com.pluspro.ctrlwcs.CtrlWcs_Chute
+12월 28, 2018 4:03:38 오후 com.pluspro.ctrlwcs.CtrlWcs_Chute main
+정보: Conf File : conf.properties
+12월 28, 2018 4:03:38 오후 com.pluspro.ctrlwcs.CtrlWcs_Chute main
+정보: -----------------------------------------------------------
+CTRLWCS Database
+-----------------------------------------------------------
+ctrlwcs.ip : 127.0.0.1
+ctrlwcs.port : 1521
+ctrlwcs.sid : orcl
+-----------------------------------------------------------
+WCS Database
+-----------------------------------------------------------
+wcs.ip : 127.0.0.1
+wcs.port : 1521
+wcs.sid : orcl
+-----------------------------------------------------------
+CHUTE Database
+-----------------------------------------------------------
+chute.ip : 127.0.0.1
+chute.port : 1433
+chute.sid : sib
+
+12월 28, 2018 4:03:41 오후 com.pluspro.ctrlwcs.CtrlWcs_Chute main
+정보: -----------------------------------------------------------
+DB Connection Instances
+-----------------------------------------------------------
+ctrlWcsCon : oracle.jdbc.driver.T4CConnection@2b80d80f
+wcsCon : oracle.jdbc.driver.T4CConnection@6483f5ae
+chuteCon   : ConnectionID:1 ClientConnectionId: 6f20fdcb-3629-47ea-8c82-2b559cea4a00
+
+12월 28, 2018 4:03:41 오후 com.pluspro.ctrlwcs.extractor.ChuteStatus extract
+정보: Start to extract ChuteStatus
+12월 28, 2018 4:03:41 오후 com.pluspro.ctrlwcs.extractor.ChuteStatus extract
+정보: Finish to extract ChuteStatus
+12월 28, 2018 4:03:41 오후 com.pluspro.ctrlwcs.extractor.ChuteResult extract
+정보: Start to extract ChuteResult
+12월 28, 2018 4:03:42 오후 com.pluspro.ctrlwcs.extractor.ChuteResult extract
+정보: Finish to extract ChuteResult
+12월 28, 2018 4:03:42 오후 com.pluspro.ctrlwcs.CtrlWcs_Chute main
+정보: End com.pluspro.ctrlwcs.CtrlWcs_Chute
+12월 28, 2018 4:04:43 오후 com.pluspro.ctrlwcs.CtrlWcs_Chute main
+정보: Start com.pluspro.ctrlwcs.CtrlWcs_Chute ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+12월 28, 2018 4:04:43 오후 com.pluspro.ctrlwcs.CtrlWcs_Chute main
+정보: Conf File : conf.properties
+12월 28, 2018 4:04:43 오후 com.pluspro.ctrlwcs.CtrlWcs_Chute main
+정보: -----------------------------------------------------------
+CTRLWCS Database
+-----------------------------------------------------------
+ctrlwcs.ip : 127.0.0.1
+ctrlwcs.port : 1521
+ctrlwcs.sid : orcl
+-----------------------------------------------------------
+WCS Database
+-----------------------------------------------------------
+wcs.ip : 127.0.0.1
+wcs.port : 1521
+wcs.sid : orcl
+-----------------------------------------------------------
+CHUTE Database
+-----------------------------------------------------------
+chute.ip : 127.0.0.1
+chute.port : 1433
+chute.sid : sib
+
+12월 28, 2018 4:04:45 오후 com.pluspro.ctrlwcs.CtrlWcs_Chute main
+정보: -----------------------------------------------------------
+DB Connection Instances
+-----------------------------------------------------------
+ctrlWcsCon : oracle.jdbc.driver.T4CConnection@2b80d80f
+wcsCon : oracle.jdbc.driver.T4CConnection@6483f5ae
+chuteCon   : ConnectionID:1 ClientConnectionId: 7b9332ea-7008-4058-8d9d-c63f5b36756c
+
+12월 28, 2018 4:04:45 오후 com.pluspro.ctrlwcs.extractor.ChuteStatus extract
+정보: Start to extract ChuteStatus
+12월 28, 2018 4:04:46 오후 com.pluspro.ctrlwcs.extractor.ChuteStatus extract
+정보: Finish to extract ChuteStatus
+12월 28, 2018 4:04:46 오후 com.pluspro.ctrlwcs.extractor.ChuteResult extract
+정보: Start to extract ChuteResult
+12월 28, 2018 4:04:46 오후 com.pluspro.ctrlwcs.extractor.ChuteResult extract
+정보: Finish to extract ChuteResult
+12월 28, 2018 4:04:46 오후 com.pluspro.ctrlwcs.CtrlWcs_Chute main
+정보: End com.pluspro.ctrlwcs.CtrlWcs_Chute ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+12월 28, 2018 4:06:16 오후 com.pluspro.ctrlwcs.CtrlWcs_Chute main
+정보: Start com.pluspro.ctrlwcs.CtrlWcs_Chute ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+12월 28, 2018 4:06:16 오후 com.pluspro.ctrlwcs.CtrlWcs_Chute main
+정보: Conf File : conf.properties
+12월 28, 2018 4:06:16 오후 com.pluspro.ctrlwcs.CtrlWcs_Chute main
+정보: -----------------------------------------------------------
+CTRLWCS Database
+-----------------------------------------------------------
+ctrlwcs.ip : 127.0.0.1
+ctrlwcs.port : 1521
+ctrlwcs.sid : orcl
+-----------------------------------------------------------
+WCS Database
+-----------------------------------------------------------
+wcs.ip : 127.0.0.1
+wcs.port : 1521
+wcs.sid : orcl
+-----------------------------------------------------------
+CHUTE Database
+-----------------------------------------------------------
+chute.ip : 127.0.0.1
+chute.port : 1433
+chute.sid : sib
+
+12월 28, 2018 4:06:19 오후 com.pluspro.ctrlwcs.CtrlWcs_Chute main
+정보: -----------------------------------------------------------
+DB Connection Instances
+-----------------------------------------------------------
+ctrlWcsCon : oracle.jdbc.driver.T4CConnection@2b80d80f
+wcsCon : oracle.jdbc.driver.T4CConnection@6483f5ae
+chuteCon   : ConnectionID:1 ClientConnectionId: 6eb462c7-54e7-4f2a-9fca-0951633e6611
+
+12월 28, 2018 4:06:19 오후 com.pluspro.ctrlwcs.extractor.ChuteStatus extract
+정보: Start to extract ChuteStatus
+12월 28, 2018 4:06:20 오후 com.pluspro.ctrlwcs.extractor.ChuteStatus insertTrg
+정보: Extracted 214
+12월 28, 2018 4:06:20 오후 com.pluspro.ctrlwcs.extractor.ChuteStatus extract
+정보: Finish to extract ChuteStatus
+12월 28, 2018 4:06:20 오후 com.pluspro.ctrlwcs.extractor.ChuteResult extract
+정보: Start to extract ChuteResult
+12월 28, 2018 4:06:20 오후 com.pluspro.ctrlwcs.extractor.ChuteResult insertTrg
+정보: Extracted 214
+12월 28, 2018 4:06:20 오후 com.pluspro.ctrlwcs.extractor.ChuteResult extract
+정보: Finish to extract ChuteResult
+12월 28, 2018 4:06:20 오후 com.pluspro.ctrlwcs.CtrlWcs_Chute main
+정보: End com.pluspro.ctrlwcs.CtrlWcs_Chute ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+12월 28, 2018 4:08:18 오후 com.pluspro.ctrlwcs.CtrlWcs_Chute main
+정보: Start com.pluspro.ctrlwcs.CtrlWcs_Chute ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+12월 28, 2018 4:08:18 오후 com.pluspro.ctrlwcs.CtrlWcs_Chute main
+정보: Conf File : conf.properties
+12월 28, 2018 4:08:18 오후 com.pluspro.ctrlwcs.CtrlWcs_Chute main
+정보: -----------------------------------------------------------
+CTRLWCS Database
+-----------------------------------------------------------
+ctrlwcs.ip : 127.0.0.1
+ctrlwcs.port : 1521
+ctrlwcs.sid : orcl
+-----------------------------------------------------------
+WCS Database
+-----------------------------------------------------------
+wcs.ip : 127.0.0.1
+wcs.port : 1521
+wcs.sid : orcl
+-----------------------------------------------------------
+CHUTE Database
+-----------------------------------------------------------
+chute.ip : 127.0.0.1
+chute.port : 1433
+chute.sid : sib
+
+12월 28, 2018 4:08:21 오후 com.pluspro.ctrlwcs.CtrlWcs_Chute main
+정보: -----------------------------------------------------------
+DB Connection Instances
+-----------------------------------------------------------
+ctrlWcsCon : oracle.jdbc.driver.T4CConnection@2b80d80f
+wcsCon : oracle.jdbc.driver.T4CConnection@6483f5ae
+chuteCon   : ConnectionID:1 ClientConnectionId: f03db495-4124-4a12-b3c0-649e2e8c2b67
+
+12월 28, 2018 4:08:21 오후 com.pluspro.ctrlwcs.extractor.ChuteStatus extract
+정보: Start to extract ChuteStatus
+12월 28, 2018 4:08:21 오후 com.pluspro.ctrlwcs.extractor.ChuteStatus insertTrg
+정보: Extracted 214 Datas
+12월 28, 2018 4:08:21 오후 com.pluspro.ctrlwcs.extractor.ChuteStatus extract
+정보: Finish to extract ChuteStatus
+12월 28, 2018 4:08:21 오후 com.pluspro.ctrlwcs.extractor.ChuteResult extract
+정보: Start to extract ChuteResult
+12월 28, 2018 4:08:22 오후 com.pluspro.ctrlwcs.extractor.ChuteResult insertTrg
+정보: Extracted 214 Datas
+12월 28, 2018 4:08:22 오후 com.pluspro.ctrlwcs.extractor.ChuteResult extract
+정보: Finish to extract ChuteResult
+12월 28, 2018 4:08:22 오후 com.pluspro.ctrlwcs.CtrlWcs_Chute main
+정보: End com.pluspro.ctrlwcs.CtrlWcs_Chute ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+12월 28, 2018 6:01:29 오후 com.pluspro.ctrlwcs.CtrlWcs_Chute main
+정보: Start com.pluspro.ctrlwcs.CtrlWcs_Chute ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+12월 28, 2018 6:01:29 오후 com.pluspro.ctrlwcs.CtrlWcs_Chute main
+정보: Conf File : conf.properties
+12월 28, 2018 6:01:29 오후 com.pluspro.ctrlwcs.CtrlWcs_Chute main
+정보: -----------------------------------------------------------
+CTRLWCS Database
+-----------------------------------------------------------
+ctrlwcs.ip : 127.0.0.1
+ctrlwcs.port : 1521
+ctrlwcs.sid : orcl
+-----------------------------------------------------------
+WCS Database
+-----------------------------------------------------------
+wcs.ip : 127.0.0.1
+wcs.port : 1521
+wcs.sid : orcl
+-----------------------------------------------------------
+CHUTE Database
+-----------------------------------------------------------
+chute.ip : 127.0.0.1
+chute.port : 1433
+chute.sid : sib
+
+12월 28, 2018 6:01:32 오후 com.pluspro.ctrlwcs.CtrlWcs_Chute main
+정보: -----------------------------------------------------------
+DB Connection Instances
+-----------------------------------------------------------
+ctrlWcsCon : oracle.jdbc.driver.T4CConnection@2b80d80f
+wcsCon : oracle.jdbc.driver.T4CConnection@6483f5ae
+chuteCon   : ConnectionID:1 ClientConnectionId: 8f073774-4cb1-46da-946f-802181358eff
+
+12월 28, 2018 6:01:32 오후 com.pluspro.ctrlwcs.extractor.ChuteStatus extract
+정보: Start to extract ChuteStatus
+12월 28, 2018 6:01:32 오후 com.pluspro.ctrlwcs.extractor.ChuteStatus insertTrg
+정보: Extracted 214 Datas
+12월 28, 2018 6:01:32 오후 com.pluspro.ctrlwcs.extractor.ChuteStatus extract
+정보: Finish to extract ChuteStatus
+12월 28, 2018 6:01:32 오후 com.pluspro.ctrlwcs.extractor.ChuteResult extract
+정보: Start to extract ChuteResult
+12월 28, 2018 6:01:33 오후 com.pluspro.ctrlwcs.extractor.ChuteResult insertTrg
+정보: Extracted 214 Datas
+12월 28, 2018 6:01:33 오후 com.pluspro.ctrlwcs.extractor.ChuteResult extract
+정보: Finish to extract ChuteResult
+12월 28, 2018 6:01:33 오후 com.pluspro.ctrlwcs.CtrlWcs_Chute main
+정보: End com.pluspro.ctrlwcs.CtrlWcs_Chute ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
