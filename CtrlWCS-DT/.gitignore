@@ -1,0 +1,15 @@
+/bin/
+/build/
+/logs/
+/.gradle/
+/.settings/
+/.apt_generated/
+.classpath
+.project
+*.log
+.DS_Store
+/.dist
+velocity.log
+velocity.log.*
+
+seed-ok.txt
