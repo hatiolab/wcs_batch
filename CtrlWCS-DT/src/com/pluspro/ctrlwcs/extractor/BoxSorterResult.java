@@ -49,7 +49,7 @@ public class BoxSorterResult implements IExtractor {
 		 */
 
 		StringJoiner sql = new StringJoiner(System.lineSeparator());
-		sql.add("SELECT B.*,");
+		sql.add("SELECT B.*, ");
 		sql.add("       (SELECT MAX(WRK_STRT_DT) FROM TB_WCS_WRK_BTCH WHERE EQP_ID = B.EQUIP_ID AND BTCH_SEQ = B.BTCH_SEQ) START_TM,");
 		sql.add("       (SELECT MAX(WRK_CMPT_DT) FROM TB_WCS_WRK_BTCH WHERE EQP_ID = B.EQUIP_ID AND BTCH_SEQ = B.BTCH_SEQ) END_TM");
 		sql.add("  FROM (");
@@ -82,7 +82,7 @@ public class BoxSorterResult implements IExtractor {
 		sql.add("		        SUM(TB_SMS_BOX_SORT_PLAN.RSLT_BOX_QTY) BOX ");
 		sql.add("			  FROM TB_WCS_ORD_HDR, SORADM.TB_SMS_BOX_SORT_PLAN ");
 		sql.add("			  WHERE TB_WCS_ORD_HDR.WRK_IDCT_YMD = '" + yyyymmdd + "'");
-		sql.add("			  AND TB_SMS_BOX_SORT_PLAN.EQP_ID IN ('DS01', 'DS02', 'DS03') ");
+		sql.add("			  AND TB_SMS_BOX_SORT_PLAN.EQP_ID IN ('DS01', 'DS02') ");
 		sql.add("			  AND TB_WCS_ORD_HDR.CENTER_CD = TB_SMS_BOX_SORT_PLAN.CENTER_CD");
 		sql.add("			  AND TB_WCS_ORD_HDR.WAV_NO = TB_SMS_BOX_SORT_PLAN.WAV_NO ");
 		sql.add("			  AND TB_WCS_ORD_HDR.ORD_NO = TB_SMS_BOX_SORT_PLAN.ORD_NO ");
@@ -90,7 +90,40 @@ public class BoxSorterResult implements IExtractor {
 		sql.add("			  GROUP BY TB_WCS_ORD_HDR.WRK_IDCT_YMD, TB_WCS_ORD_HDR.CENTER_CD,");
 		sql.add("			  TB_SMS_BOX_SORT_PLAN.EQP_ID, TB_SMS_BOX_SORT_PLAN.WAV_NO,");
 		sql.add("			  TB_SMS_BOX_SORT_PLAN.BIZPTNR_CD, TB_SMS_BOX_SORT_PLAN.SKU_CD, ");
-		sql.add("			  TB_SMS_BOX_SORT_PLAN.BTCH_SEQ) RSLT");
+		sql.add("			  TB_SMS_BOX_SORT_PLAN.BTCH_SEQ");
+		sql.add("			  UNION ALL");
+		sql.add("			  SELECT");
+		sql.add("					ORD_HDR.WRK_IDCT_YMD BDATE,         ");
+		sql.add("					PLAN_DTL.CENTER_CD CENTER_CD,");
+		sql.add("					PLAN_DTL.EQP_ID EQUIP_ID, ");
+		sql.add("					PLAN_DTL.WAV_NO ORD, ");
+		sql.add("					PLAN_HDR.BIZPTNR_CD, ");
+		sql.add("					PLAN_DTL.SKU_CD,");
+		sql.add("					PLAN_DTL.BTCH_SEQ,");
+		sql.add("					SUM(PLAN_DTL.PLAN_QTY) PLAN_PCS, ");
+		sql.add("					SUM(PLAN_DTL.RSLT_QTY) PCS,");
+		sql.add("					0 PLAN_BOX, ");
+		sql.add("					0 BOX ");
+		sql.add("				FROM TB_WCS_ORD_HDR ORD_HDR, SORADM.TB_SMS_HBD_SORT_PLAN_HDR PLAN_HDR, SORADM.TB_SMS_HBD_SORT_PLAN_DTL PLAN_DTL");
+		sql.add("				WHERE 1 = 1");
+		sql.add("				AND ORD_HDR.CENTER_CD = PLAN_DTL.CENTER_CD");
+		sql.add("				AND ORD_HDR.WAV_NO = PLAN_DTL.WAV_NO");
+		sql.add("				AND ORD_HDR.ORD_NO = PLAN_DTL.ORD_NO");
+		sql.add("				AND PLAN_HDR.CENTER_CD = PLAN_DTL.CENTER_CD");
+		sql.add("				AND PLAN_HDR.EQP_ID = PLAN_DTL.EQP_ID");
+		sql.add("				AND PLAN_HDR.BTCH_SEQ = PLAN_DTL.BTCH_SEQ");
+		sql.add("				AND PLAN_HDR.WRK_NO = PLAN_DTL.WRK_NO");
+		sql.add("				AND PLAN_DTL.EQP_ID = 'DS03'");
+		sql.add("				AND ORD_HDR.WRK_IDCT_YMD = '" + yyyymmdd + "'");
+		sql.add("				GROUP BY ");
+		sql.add("					ORD_HDR.WRK_IDCT_YMD,");
+		sql.add("					PLAN_DTL.CENTER_CD,");
+		sql.add("					PLAN_DTL.EQP_ID, ");
+		sql.add("					PLAN_DTL.WAV_NO, ");
+		sql.add("					PLAN_HDR.BIZPTNR_CD, ");
+		sql.add("					PLAN_DTL.SKU_CD,");
+		sql.add("					PLAN_DTL.BTCH_SEQ");
+		sql.add("			  ) RSLT");
 		sql.add("         GROUP BY RSLT.BDATE, RSLT.CENTER_CD, RSLT.EQUIP_ID, RSLT.ORD) B");
 
 		try {
