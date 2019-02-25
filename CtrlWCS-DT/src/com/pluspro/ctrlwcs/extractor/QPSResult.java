@@ -10,6 +10,7 @@ import java.util.logging.Logger;
 
 import com.pluspro.ctrlwcs.beans.EquipmentResultVo;
 import com.pluspro.ctrlwcs.util.LogUtil;
+import com.pluspro.ctrlwcs.util.SqlUtil;
 
 public class QPSResult implements IExtractor {
 
@@ -29,13 +30,15 @@ public class QPSResult implements IExtractor {
 	public void extract() {
 		logger.info("Start to extract QPS");
 		
-		ArrayList<EquipmentResultVo> list = extractOrg();
+		ArrayList<EquipmentResultVo> list = extractOrg(this.yyyymmdd);
+		list.addAll(extractOrg(SqlUtil.preDate(this.yyyymmdd)));
+		
 		insertTrg(list);
 		
 		logger.info("End to extract QPS");
 	}
 
-	private ArrayList<EquipmentResultVo> extractOrg(){
+	private ArrayList<EquipmentResultVo> extractOrg(String yyyymmdd){
 		ArrayList<EquipmentResultVo> list = new ArrayList<>();
 		
 		Statement stmt = null;
