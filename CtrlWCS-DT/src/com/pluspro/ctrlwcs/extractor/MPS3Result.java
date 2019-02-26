@@ -11,6 +11,7 @@ import java.util.logging.Logger;
 
 import com.pluspro.ctrlwcs.beans.EquipmentResultVo;
 import com.pluspro.ctrlwcs.util.LogUtil;
+import com.pluspro.ctrlwcs.util.SqlUtil;
 
 public class MPS3Result implements IExtractor {
 
@@ -30,13 +31,15 @@ public class MPS3Result implements IExtractor {
 	public void extract() {
 		logger.info("Start to extract MPS3");
 
-		ArrayList<EquipmentResultVo> list = extractOrg();
+		ArrayList<EquipmentResultVo> list = extractOrg(this.yyyymmdd);
+		list.addAll(extractOrg(SqlUtil.preDate(this.yyyymmdd)));
+
 		insertTrg(list);
 
 		logger.info("End to extract MPS3");
 	}
 
-	private ArrayList<EquipmentResultVo> extractOrg() {
+	private ArrayList<EquipmentResultVo> extractOrg(String yyyymmdd) {
 		ArrayList<EquipmentResultVo> list = new ArrayList<>();
 
 		Statement stmt = null;
@@ -73,7 +76,7 @@ public class MPS3Result implements IExtractor {
 		sql.add("AND TWSBS.JOB_BATCH_SEQ = TJB.JOB_BATCH_SEQ");
 		sql.add("WHERE 1 = 1 ");
 		sql.add("AND TWSBS.DOMAIN_ID IN (11, 12) ");
-		sql.add("AND (TWSBS.JOB_DATE = '" + yyyymmdd + "' OR TWSBS.JOB_DATE = TO_CHAR(TO_DATE('" + yyyymmdd + "', 'YYYYMMDD') - 1, 'YYYYMMDD'))");
+		sql.add("AND (TWSBS.JOB_DATE = '" + yyyymmdd + "')");
 		sql.add("ORDER BY EQUIP_ID");
 
 		try {
@@ -129,7 +132,7 @@ public class MPS3Result implements IExtractor {
 		Statement stmt = null;
 
 		try {
-			
+
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd HHmmss");
 
 			stmt = trgCon.createStatement();
@@ -137,13 +140,17 @@ public class MPS3Result implements IExtractor {
 			for (EquipmentResultVo vo : list) {
 				String startTmSql = null;
 				String endTmSql = null;
-				
-				if(vo.getStartTm() != null) startTmSql = "TO_DATE('" + sdf.format(vo.getStartTm()) + "', 'yyyymmdd hh24miss')";
-				else startTmSql = "NULL";
-				
-				if(vo.getEndTm() != null) endTmSql = "TO_DATE('" + sdf.format(vo.getEndTm()) + "', 'yyyymmdd hh24miss')";
-				else endTmSql = "NULL";
-				
+
+				if (vo.getStartTm() != null)
+					startTmSql = "TO_DATE('" + sdf.format(vo.getStartTm()) + "', 'yyyymmdd hh24miss')";
+				else
+					startTmSql = "NULL";
+
+				if (vo.getEndTm() != null)
+					endTmSql = "TO_DATE('" + sdf.format(vo.getEndTm()) + "', 'yyyymmdd hh24miss')";
+				else
+					endTmSql = "NULL";
+
 				String sql = "MERGE INTO TB_EQP_RSLT	" + System.lineSeparator() +
 						"USING(					" + System.lineSeparator() +
 						"    SELECT '" + vo.getBdate() + "' BDATE, '" + vo.getCenterCd() + "'CENTER_CD, '" + vo.getEquipId() + "' EQUIP_ID,		" + System.lineSeparator() +
@@ -160,7 +167,7 @@ public class MPS3Result implements IExtractor {
 						"    TB_EQP_RSLT.EQUIP_ID = ORG.EQUIP_ID AND TB_EQP_RSLT.ORD = ORG.ORD AND TB_EQP_RSLT.COM_CD = ORG.COM_CD) 			" + System.lineSeparator() +
 						"WHEN MATCHED THEN 																										" + System.lineSeparator() +
 						"  UPDATE SET CUST_CNT = ORG.CUST_CNT,																					" + System.lineSeparator() +
-						"             CUST = ORG.CUST,																							" + System.lineSeparator() +						
+						"             CUST = ORG.CUST,																							" + System.lineSeparator() +
 						"             PLAN_BOX = ORG.PLAN_BOX,																					" + System.lineSeparator() +
 						"             BOX = ORG.BOX,																							" + System.lineSeparator() +
 						"             PLAN_SKU = ORG.PLAN_SKU,																					" + System.lineSeparator() +
@@ -168,7 +175,7 @@ public class MPS3Result implements IExtractor {
 						"             PLAN_PCS = ORG.PLAN_PCS,																					" + System.lineSeparator() +
 						"             PCS = ORG.PCS,																							" + System.lineSeparator() +
 						"             START_TM = ORG.START_TM,																					" + System.lineSeparator() +
-						"             END_TM = ORG.END_TM,																						" + System.lineSeparator() +						
+						"             END_TM = ORG.END_TM,																						" + System.lineSeparator() +
 						"             UPD_DT = SYSDATE																							" + System.lineSeparator() +
 						"WHEN NOT MATCHED THEN 																									" + System.lineSeparator() +
 						"  INSERT(BDATE, CENTER_CD, EQUIP_ID, CENTER_NM, EQUIP_NM, ORD, COM_CD, CUST_CNT, 										" + System.lineSeparator() +
