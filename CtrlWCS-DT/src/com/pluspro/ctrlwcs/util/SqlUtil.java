@@ -34,6 +34,6 @@ public class SqlUtil {
 	 */
 	public static String preDate(String date) {
 		LocalDate parseDate = LocalDate.parse(date, DateTimeFormatter.BASIC_ISO_DATE);
-		return parseDate.minusDays(1).toString();
+		return parseDate.minusDays(1).format(DateTimeFormatter.BASIC_ISO_DATE);
 	}
 }
