@@ -5,14 +5,14 @@ import java.sql.Connection;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Properties;
-import java.util.StringJoiner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import com.pluspro.ctrlwcs.connecter.ConnectionHelper;
 import com.pluspro.ctrlwcs.extractor.IExtractor;
-import com.pluspro.ctrlwcs.extractor.QPSResult;
+import com.pluspro.ctrlwcs.extractor.WMSResult;
 import com.pluspro.ctrlwcs.util.LogUtil;
+import com.pluspro.ctrlwcs.util.StringJoiner;
 
 public class CtrlWcs_WMS {
 
@@ -77,7 +77,7 @@ public class CtrlWcs_WMS {
 			sb.add("wmsCon : " + wmsCon);
 			logger.info(sb.toString());
 
-			IExtractor extractor = new QPSResult(yyyymmdd, wmsCon, ctrlWcsCon);
+			IExtractor extractor = new WMSResult(yyyymmdd, wmsCon, ctrlWcsCon);
 			extractor.extract();
 		} catch (Exception e) {
 			logger.log(Level.SEVERE, "Error", e);

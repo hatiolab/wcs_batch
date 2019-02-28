@@ -5,13 +5,13 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.StringJoiner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import com.pluspro.ctrlwcs.beans.EquipmentResultVo;
 import com.pluspro.ctrlwcs.util.LogUtil;
 import com.pluspro.ctrlwcs.util.SqlUtil;
+import com.pluspro.ctrlwcs.util.StringJoiner;
 
 public class WMSResult implements IExtractor {
 
@@ -32,11 +32,11 @@ public class WMSResult implements IExtractor {
 		logger.info("Start to extract WMS");
 
 		ArrayList<EquipmentResultVo> list = extractOrg(this.yyyymmdd);
-		list.addAll(extractOrg(SqlUtil.preDate(this.yyyymmdd)));
+		list.addAll(extractOrg(SqlUtil.getPreDate(this.yyyymmdd)));
 		
 		insertTrg(list);
 
-		logger.info("End to extract QPS");
+		logger.info("End to extract WMS");
 	}
 
 	private ArrayList<EquipmentResultVo> extractOrg(String yyyymmdd) {
@@ -58,10 +58,10 @@ public class WMSResult implements IExtractor {
 		sql.add("	 	CUST_CNT AS CUST,");
 		sql.add("	 	PLAN_BOX,");
 		sql.add("	 	BOX,");
+//		sql.add("	 	NULL START_TM,");
+//		sql.add("	 	NULL END_TM,");
 		sql.add("	 	PLAN_SKU,");
-		sql.add("	 	SKU,");
-		sql.add("	 	NULL START_TM,");
-		sql.add("	 	NULL END_TM");
+		sql.add("	 	SKU");
 		sql.add("	 FROM INTERFACE1.DBO.V_DT_MCC_NON_FAC WITH (NOLOCK)");
 		sql.add(" )");
 		sql.add(" SELECT * FROM RSLT ");
@@ -85,8 +85,8 @@ public class WMSResult implements IExtractor {
 				vo.setBox(rs.getInt("BOX"));
 				vo.setPlanSku(rs.getInt("PLAN_SKU"));
 				vo.setSku(rs.getInt("SKU"));
-				vo.setStartTm(rs.getTimestamp("START_TM"));
-				vo.setEndTm(rs.getTimestamp("END_TM"));
+//				vo.setStartTm(rs.getTimestamp("START_TM"));
+//				vo.setEndTm(rs.getTimestamp("END_TM"));
 
 				// logger.info(vo.getBdate() + " : " + vo.getCenterCd() + " : " + vo.getEquipId() + " : " + vo.getChuteNo() + " : " + vo.getStatus());
 
@@ -142,8 +142,8 @@ public class WMSResult implements IExtractor {
 						"           '" + vo.getCenterNm() + "' CENTER_NM, '" + vo.getEquipNm() + "' EQUIP_NM, '" + vo.getOrd() + "' ORD,		" + System.lineSeparator() +
 						"           " + vo.getCustCnt() + " CUST_CNT, " + vo.getCust() + " CUST,												" + System.lineSeparator() +
 						"           " + vo.getPlanBox() + " PLAN_BOX, " + vo.getBox() + " BOX,													" + System.lineSeparator() +
-						"           " + vo.getPlanSku() + " PLAN_SKU, " + vo.getSku() + " SKU,													" + System.lineSeparator() +
-						"           " + startTmSql + " START_TM, " + endTmSql + " END_TM														" + System.lineSeparator() +
+//						"           " + startTmSql + " START_TM, " + endTmSql + " END_TM,														" + System.lineSeparator() +
+						"           " + vo.getPlanSku() + " PLAN_SKU, " + vo.getSku() + " SKU													" + System.lineSeparator() +
 						"      FROM DUAL																										" + System.lineSeparator() +
 						") ORG 																													" + System.lineSeparator() +
 						"ON (TB_EQP_RSLT.BDATE = ORG.BDATE AND TB_EQP_RSLT.CENTER_CD = ORG.CENTER_CD AND 										" + System.lineSeparator() +
@@ -155,8 +155,8 @@ public class WMSResult implements IExtractor {
 						"             BOX = ORG.BOX,																							" + System.lineSeparator() +
 						"             PLAN_SKU = ORG.PLAN_SKU,																					" + System.lineSeparator() +
 						"             SKU = ORG.SKU,																							" + System.lineSeparator() +
-						"             START_TM = ORG.START_TM,																					" + System.lineSeparator() +
-						"             END_TM = ORG.END_TM,																						" + System.lineSeparator() +
+//						"             START_TM = ORG.START_TM,																					" + System.lineSeparator() +
+//						"             END_TM = ORG.END_TM,																						" + System.lineSeparator() +
 						"             UPD_DT = SYSDATE																							" + System.lineSeparator() +
 						"WHEN NOT MATCHED THEN 																									" + System.lineSeparator() +
 						"  INSERT(BDATE, CENTER_CD, EQUIP_ID, CENTER_NM, EQUIP_NM, ORD, HEAP_PLAN_INV, 											" + System.lineSeparator() +

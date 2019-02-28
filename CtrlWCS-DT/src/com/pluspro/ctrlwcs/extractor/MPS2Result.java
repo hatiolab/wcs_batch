@@ -5,12 +5,12 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.StringJoiner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import com.pluspro.ctrlwcs.beans.EquipmentResultVo;
 import com.pluspro.ctrlwcs.util.LogUtil;
+import com.pluspro.ctrlwcs.util.StringJoiner;
 
 public class MPS2Result implements IExtractor {
 
@@ -21,7 +21,6 @@ public class MPS2Result implements IExtractor {
 	Logger logger = LogUtil.getInstance();
 
 	String cmd;
-	String yyyymmdd;
 
 	Connection mps2KorailCon = null; // MPS2.0 �ڷ��� DB Connection
 	Connection mps2EEDBoxCon = null; // MPS2.0 EED �Һ� DB Connection
@@ -30,7 +29,6 @@ public class MPS2Result implements IExtractor {
 
 	public MPS2Result(String cmd, String yyyymmdd, Connection mps2KorailCon, Connection mps2EEDBoxCon, Connection mps2EEDSubdivisionCon, Connection trgCon) {
 		this.cmd = cmd;
-		this.yyyymmdd = yyyymmdd;
 		this.mps2KorailCon = mps2KorailCon;
 		this.mps2EEDBoxCon = mps2EEDBoxCon;
 		this.mps2EEDSubdivisionCon = mps2EEDSubdivisionCon;

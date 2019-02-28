@@ -5,12 +5,13 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.StringJoiner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import com.pluspro.ctrlwcs.beans.EquipmentResultVo;
 import com.pluspro.ctrlwcs.util.LogUtil;
+import com.pluspro.ctrlwcs.util.SqlUtil;
+import com.pluspro.ctrlwcs.util.StringJoiner;
 
 public class OnlineResult implements IExtractor {
 
@@ -30,13 +31,15 @@ public class OnlineResult implements IExtractor {
 	public void extract() {
 		logger.info("Start to extract ��� �¶���");
 
-		ArrayList<EquipmentResultVo> list = extractOrg();
+		ArrayList<EquipmentResultVo> list = extractOrg(this.yyyymmdd);
+		list.addAll(extractOrg(SqlUtil.getPreDate(this.yyyymmdd)));
+
 		insertTrg(list);
 
 		logger.info("End to extract ��� �¶���");
 	}
 
-	private ArrayList<EquipmentResultVo> extractOrg() {
+	private ArrayList<EquipmentResultVo> extractOrg(String yyyymmdd) {
 		ArrayList<EquipmentResultVo> list = new ArrayList<>();
 
 		Statement stmt = null;
@@ -82,7 +85,7 @@ public class OnlineResult implements IExtractor {
 		sql.add("                      SUM(TB_TALLY_WRK_ONLINE_DTL.PLAN_QTY) PLAN_PCS,");
 		sql.add("                      SUM(TB_TALLY_WRK_ONLINE_DTL.RSLT_QTY) PCS");
 		sql.add("                 FROM CONADM.TB_TALLY_WRK_ONLINE_DTL, TB_WCS_ORD_HDR");
-		sql.add("                WHERE (TB_WCS_ORD_HDR.WRK_IDCT_YMD = '" + yyyymmdd + "'" + " OR TB_WCS_ORD_HDR.WRK_IDCT_YMD = TO_CHAR(TO_DATE('" + yyyymmdd + "', 'YYYYMMDD') - 1, 'YYYYMMDD'))");
+		sql.add("                WHERE (TB_WCS_ORD_HDR.WRK_IDCT_YMD = '" + yyyymmdd + "'");
 		sql.add("                  AND TB_TALLY_WRK_ONLINE_DTL.EQP_ID IN ('DC05', 'DC50', 'DC51', 'DC53', 'DC54', 'DC55', 'DC57')");
 		sql.add("                  AND TB_TALLY_WRK_ONLINE_DTL.CENTER_CD = TB_WCS_ORD_HDR.CENTER_CD");
 		sql.add("                  AND TB_TALLY_WRK_ONLINE_DTL.WAV_NO = TB_WCS_ORD_HDR.WAV_NO");
@@ -106,8 +109,8 @@ public class OnlineResult implements IExtractor {
 				vo.setOrd(rs.getString("ORD"));
 				vo.setCustCnt(rs.getInt("CUST_CNT"));
 				vo.setCust(rs.getInt("CUST"));
-//				vo.setPlanBox(rs.getInt("PLAN_BOX"));
-//				vo.setBox(rs.getInt("BOX"));
+				// vo.setPlanBox(rs.getInt("PLAN_BOX"));
+				// vo.setBox(rs.getInt("BOX"));
 				vo.setPlanPcs(rs.getInt("PLAN_PCS"));
 				vo.setPcs(rs.getInt("PCS"));
 				vo.setPlanSku(rs.getInt("PLAN_SKU"));
@@ -216,5 +219,4 @@ public class OnlineResult implements IExtractor {
 			}
 		}
 	}
-
 }

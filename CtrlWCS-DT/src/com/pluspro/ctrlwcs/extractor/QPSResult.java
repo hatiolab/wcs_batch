@@ -31,7 +31,7 @@ public class QPSResult implements IExtractor {
 		logger.info("Start to extract QPS");
 		
 		ArrayList<EquipmentResultVo> list = extractOrg(this.yyyymmdd);
-		list.addAll(extractOrg(SqlUtil.preDate(this.yyyymmdd)));
+		list.addAll(extractOrg(SqlUtil.getPreDate(this.yyyymmdd)));
 		
 		insertTrg(list);
 		

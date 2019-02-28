@@ -3,13 +3,16 @@ package com.pluspro.ctrlwcs.extractor;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.Arrays;
 import java.util.HashMap;
-import java.util.StringJoiner;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import com.pluspro.ctrlwcs.beans.ChuteResultVo;
 import com.pluspro.ctrlwcs.util.LogUtil;
+import com.pluspro.ctrlwcs.util.SqlUtil;
+import com.pluspro.ctrlwcs.util.StringJoiner;
 
 public class ChuteResult implements IExtractor {
 
@@ -32,14 +35,17 @@ public class ChuteResult implements IExtractor {
 
 		logger.info("Start to extract ChuteResult");
 
-		HashMap<String, ChuteResultVo> map = extractOrg();
-		setProgress(map);
-		insertTrg(map);
+		List<String> dateList = Arrays.asList(this.yyyymmdd, SqlUtil.getPreDate(this.yyyymmdd));
+		for (String date : dateList) {
+			HashMap<String, ChuteResultVo> map = extractOrg(date);
+			setProgress(map);
+			insertTrg(map);
+		}
 
 		logger.info("Finish to extract ChuteResult");
 	}
 
-	private HashMap<String, ChuteResultVo> extractOrg() {
+	private HashMap<String, ChuteResultVo> extractOrg(String yyyymmdd) {
 		HashMap<String, ChuteResultVo> map = new HashMap<>();
 
 		Statement stmt = null;
@@ -215,7 +221,5 @@ public class ChuteResult implements IExtractor {
 				} catch (Exception e) {}
 			}
 		}
-
 	}
-
 }
