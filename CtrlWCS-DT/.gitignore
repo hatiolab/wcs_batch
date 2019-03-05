@@ -3,9 +3,5 @@
 /logs/
 /.gradle/
 /.settings/
-/.apt_generated/
 *.log
 .DS_Store
-/.dist
-velocity.log
-velocity.log.*

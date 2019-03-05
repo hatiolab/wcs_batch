@@ -1,1 +1,1 @@
-java -classpath ".;./bin;./lib/ojdbc8.jar;./lib/sqljdbc42.jar" com.pluspro.ctrlwcs.CtrlWcs_Online
+.\jdk7\bin\java.exe -classpath ".;./bin;./lib/ojdbc7.jar;./lib/sqljdbc4.jar" com.pluspro.ctrlwcs.CtrlWcs_Online

@@ -2,6 +2,6 @@ REM java -classpath ".;../lib/ojdbc8.jar;../lib/sqljdbc42.jar" com.pluspro.ctrlw
 
 REM java -classpath ".;../lib/ojdbc8.jar;../lib/sqljdbc42.jar" com.pluspro.ctrlwcs.MsSqlConnecter www.pluspro.net:4041 SIB sa Qwer1234
 
-java -classpath ".;./bin;./lib/ojdbc8.jar;./lib/sqljdbc42.jar" com.pluspro.ctrlwcs.CtrlWcs_Chute
+.\jdk7\bin\java.exe -classpath ".;./bin;./lib/ojdbc7.jar;./lib/sqljdbc4.jar" com.pluspro.ctrlwcs.CtrlWcs_Chute
 
 REM pause
