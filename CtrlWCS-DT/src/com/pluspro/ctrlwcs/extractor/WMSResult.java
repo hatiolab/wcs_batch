@@ -3,7 +3,6 @@ package com.pluspro.ctrlwcs.extractor;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -46,26 +45,29 @@ public class WMSResult implements IExtractor {
 		ResultSet rs = null;
 
 		StringJoiner sql = new StringJoiner(System.lineSeparator());
-		sql.add(" WITH RSLT AS (");
-		sql.add("	 SELECT");
-		sql.add("	 	REPLACE(B_DATE, '-','') AS BDATE,");
-		sql.add("	 	'DT' AS CENTER_CD,");
-		sql.add("	 	EQUIP_ID,");
-		sql.add("	 	CENTER_NM,");
-		sql.add("	 	EQUIP_NM,");
-		sql.add("	 	ORD,");
-		sql.add("	 	PLAN_CUST_CNT AS CUST_CNT,");
-		sql.add("	 	CUST_CNT AS CUST,");
-		sql.add("	 	PLAN_BOX,");
-		sql.add("	 	BOX,");
-//		sql.add("	 	NULL START_TM,");
-//		sql.add("	 	NULL END_TM,");
-		sql.add("	 	PLAN_SKU,");
-		sql.add("	 	SKU");
-		sql.add("	 FROM INTERFACE1.DBO.V_DT_MCC_NON_FAC WITH (NOLOCK)");
-		sql.add(" )");
-		sql.add(" SELECT * FROM RSLT ");
-		sql.add(" WHERE BDATE = '" + yyyymmdd + "'");
+		sql.add("WITH RSLT AS (");
+		sql.add(" SELECT");
+		sql.add(" 	REPLACE(B_DATE, '-','') AS BDATE,");
+		sql.add(" 	'DT' AS CENTER_CD,");
+		sql.add(" 	CENTER_NM,");
+		sql.add(" 	CASE ");
+		sql.add(" 		WHEN CENTER_NM = '상온' THEN 'NST1'");
+		sql.add(" 		WHEN CENTER_NM = '저온' THEN 'NST2'");
+		sql.add(" 		WHEN CENTER_NM = '코레일상온' THEN 'NST3'");
+		sql.add(" 	ELSE EQUIP_ID");
+		sql.add(" 	END AS EQUIP_ID,");
+		sql.add(" 	EQUIP_NM,");
+		sql.add(" 	ORD,");
+		sql.add(" 	PLAN_CUST_CNT AS CUST_CNT,");
+		sql.add(" 	CUST_CNT AS CUST,");
+		sql.add(" 	PLAN_BOX,");
+		sql.add(" 	BOX,");
+		sql.add(" 	PLAN_SKU,");
+		sql.add(" 	SKU");
+		sql.add(" FROM INTERFACE1.DBO.V_DT_MCC_NON_FAC WITH (NOLOCK)");
+		sql.add(")");
+		sql.add("SELECT * FROM RSLT ");
+		sql.add("WHERE BDATE = '" + yyyymmdd + "'");
 
 		try {
 			stmt = orgCon.createStatement();
@@ -118,23 +120,23 @@ public class WMSResult implements IExtractor {
 
 		try {
 
-			SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd HHmmss");
+//			SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd HHmmss");
 
 			stmt = trgCon.createStatement();
 
 			for (EquipmentResultVo vo : list) {
-				String startTmSql = null;
-				String endTmSql = null;
-
-				if (vo.getStartTm() != null)
-					startTmSql = "TO_DATE('" + sdf.format(vo.getStartTm()) + "', 'yyyymmdd hh24miss')";
-				else
-					startTmSql = "NULL";
-
-				if (vo.getEndTm() != null)
-					endTmSql = "TO_DATE('" + sdf.format(vo.getEndTm()) + "', 'yyyymmdd hh24miss')";
-				else
-					endTmSql = "NULL";
+//				String startTmSql = null;
+//				String endTmSql = null;
+//
+//				if (vo.getStartTm() != null)
+//					startTmSql = "TO_DATE('" + sdf.format(vo.getStartTm()) + "', 'yyyymmdd hh24miss')";
+//				else
+//					startTmSql = "NULL";
+//
+//				if (vo.getEndTm() != null)
+//					endTmSql = "TO_DATE('" + sdf.format(vo.getEndTm()) + "', 'yyyymmdd hh24miss')";
+//				else
+//					endTmSql = "NULL";
 
 				String sql = "MERGE INTO TB_EQP_RSLT" + System.lineSeparator() +
 						"USING(																													" + System.lineSeparator() +
@@ -159,10 +161,10 @@ public class WMSResult implements IExtractor {
 //						"             END_TM = ORG.END_TM,																						" + System.lineSeparator() +
 						"             UPD_DT = SYSDATE																							" + System.lineSeparator() +
 						"WHEN NOT MATCHED THEN 																									" + System.lineSeparator() +
-						"  INSERT(BDATE, CENTER_CD, EQUIP_ID, CENTER_NM, EQUIP_NM, ORD, HEAP_PLAN_INV, 											" + System.lineSeparator() +
-						"         HEAP_INV, PLAN_INV, INV, WORKABLE_INV, MULTI_REST_INV, REG_DT, UPD_DT) 										" + System.lineSeparator() +
-						"  VALUES(ORG.BDATE, ORG.CENTER_CD, ORG.EQUIP_ID, ORG.CENTER_NM, ORG.EQUIP_NM, ORG.ORD, ORG.HEAP_PLAN_INV, 				" + System.lineSeparator() +
-						"         ORG.HEAP_INV, ORG.PLAN_INV, ORG.INV, ORG.WORKABLE_INV, ORG.MULTI_REST_INV, SYSDATE, SYSDATE)";
+						"  INSERT(BDATE, CENTER_CD, EQUIP_ID, CENTER_NM, EQUIP_NM, ORD, 														" + System.lineSeparator() +
+						"         CUST_CNT, CUST, PLAN_BOX, BOX, PLAN_SKU, SKU, REG_DT, UPD_DT) 												" + System.lineSeparator() +
+						"  VALUES(ORG.BDATE, ORG.CENTER_CD, ORG.EQUIP_ID, ORG.CENTER_NM, ORG.EQUIP_NM, ORG.ORD, 								" + System.lineSeparator() +
+						"         ORG.CUST_CNT, ORG.CUST, ORG.PLAN_BOX, ORG.BOX, ORG.PLAN_SKU, ORG.SKU, SYSDATE, SYSDATE)";
 
 				stmt.execute(sql);
 			}
