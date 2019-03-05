@@ -85,7 +85,7 @@ public class OnlineResult implements IExtractor {
 		sql.add("                      SUM(TB_TALLY_WRK_ONLINE_DTL.PLAN_QTY) PLAN_PCS,");
 		sql.add("                      SUM(TB_TALLY_WRK_ONLINE_DTL.RSLT_QTY) PCS");
 		sql.add("                 FROM CONADM.TB_TALLY_WRK_ONLINE_DTL, TB_WCS_ORD_HDR");
-		sql.add("                WHERE (TB_WCS_ORD_HDR.WRK_IDCT_YMD = '" + yyyymmdd + "'");
+		sql.add("                WHERE TB_WCS_ORD_HDR.WRK_IDCT_YMD = '" + yyyymmdd + "'");
 		sql.add("                  AND TB_TALLY_WRK_ONLINE_DTL.EQP_ID IN ('DC05', 'DC50', 'DC51', 'DC53', 'DC54', 'DC55', 'DC57')");
 		sql.add("                  AND TB_TALLY_WRK_ONLINE_DTL.CENTER_CD = TB_WCS_ORD_HDR.CENTER_CD");
 		sql.add("                  AND TB_TALLY_WRK_ONLINE_DTL.WAV_NO = TB_WCS_ORD_HDR.WAV_NO");
