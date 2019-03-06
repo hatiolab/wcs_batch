@@ -88,6 +88,7 @@ public class QPSResult implements IExtractor {
 					"	                AND TB_QPS_SORT_PLAN_HDR.EQP_ID IN ('DQ01', 'DQ02', 'DQ03', 'DQ04')											" + System.lineSeparator() + 
 					"                   AND TB_QPS_SORT_PLAN_HDR.CENTER_CD = TB_WCS_ORD_HDR.CENTER_CD												" + System.lineSeparator() +
 					"	                AND TB_QPS_SORT_PLAN_HDR.ORD_NO = TB_WCS_ORD_HDR.ORD_NO														" + System.lineSeparator() +
+					"	                AND TB_QPS_SORT_PLAN_HDR.WAV_NO = TB_WCS_ORD_HDR.WAV_NO														" + System.lineSeparator() +
 					"	                AND TB_QPS_SORT_PLAN_HDR.CENTER_CD = TB_QPS_SORT_PLAN_DTL.CENTER_CD											" + System.lineSeparator() +
 					"	                AND TB_QPS_SORT_PLAN_HDR.EQP_ID = TB_QPS_SORT_PLAN_DTL.EQP_ID												" + System.lineSeparator() +
 					"	                AND TB_QPS_SORT_PLAN_HDR.BTCH_SEQ = TB_QPS_SORT_PLAN_DTL.BTCH_SEQ											" + System.lineSeparator() +
